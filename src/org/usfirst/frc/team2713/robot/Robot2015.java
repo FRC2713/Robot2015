@@ -5,7 +5,9 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+
 import org.usfirst.frc.team2713.robot.commands.ExampleCommand;
+import org.usfirst.frc.team2713.robot.commands.commandBase;
 import org.usfirst.frc.team2713.robot.subsystems.ExampleSubsystem;
 
 /**
@@ -15,8 +17,9 @@ import org.usfirst.frc.team2713.robot.subsystems.ExampleSubsystem;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
-public class Robot extends IterativeRobot {
+public class Robot2015 extends IterativeRobot {
 
+	public static commandBase base = new commandBase();
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
 
@@ -29,6 +32,12 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
 		oi = new OI();
         // instantiate the command used for the autonomous period
+		
+        System.out.println("--------------------2713-----------------------");
+        System.out.println("*Awsome-sauce code produced by RyNaJaSa  inc.      *");
+        System.out.println("*WARNING: might not possibly work             *");
+        System.out.println("-----------------TEST-ROBOT--------------------");
+        
         autonomousCommand = new ExampleCommand();
     }
 	
@@ -54,6 +63,7 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+        base.init();
     }
 
     /**
@@ -77,4 +87,5 @@ public class Robot extends IterativeRobot {
     public void testPeriodic() {
         LiveWindow.run();
     }
+
 }
