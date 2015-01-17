@@ -1,1 +1,24 @@
 Changelog:
+  Developer Build 2015.0.1 …
+    Began to write the mechanum drive code, in theory done. Also, I have
+    divirged from the way that the robot has been coded in the past, now (at
+    least to me) it makes more sense, but I am not sure if it works.
+    
+  Developer Build 2015.0.2 …
+    Wrote the arm lift API. It will lift till it hits a limit switch and
+    then stop. Works for both up and down, and any amount of limit switches.
+    Assumes we put a limit switch at the starting point. Will not go lower
+    than intended, need to make it so it does not go higher than intended.
+  
+  Developer Build 2015.0.3 …
+    Made it so the lift will not go heigher than intended.
+    
+  Developer Build 2015.0.4 …
+    Wrote in the code for the buttons.
+    
+  Developer Build 2015.0.5 …
+    Wrote in the grabber code. It will now close when you press a button
+    and open when you press another. It will also not be
+    able to close or open after you send a certain amount of voltage.
+
+    
