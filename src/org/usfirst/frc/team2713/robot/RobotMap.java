@@ -19,4 +19,6 @@ public class RobotMap {
     public static final int LEFT_DRIVE_MOTOR_BETA = 2;    
     public static final int RIGHT_DRIVE_MOTOR_ALPHA = 3;
     public static final int RIGHT_DRIVE_MOTOR_BETA = 4;
+    public static final int ARM_MOTOR = 5;
+
 }
