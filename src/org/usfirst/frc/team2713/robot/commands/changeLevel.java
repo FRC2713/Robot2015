@@ -21,7 +21,11 @@ public class changeLevel extends commandBase {
 	}
 
 	protected boolean isFinished() {
-		if(upOrDown == false && lift.currentLevel - 1 < 0) {
+		if (upOrDown == false && lift.currentLevel - 1 < 0) {
+			return true;
+		}
+		if (upOrDown == true
+				&& lift.currentLevel + 1 > lift.limitSwitches.length) {
 			return true;
 		}
 		if (upOrDown == true) {
