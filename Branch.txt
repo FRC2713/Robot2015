@@ -1,0 +1,6 @@
+There are two branched in this project.
+  One: The master branch. This branch is the branch that all known working versions will be pushed to. This is the
+       code that will be running on the robot.
+       
+  Two: The TestBranch. This branch is the branch that all versions will be pushed to, working or not, compile errors
+       or not. 
