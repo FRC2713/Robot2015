@@ -20,5 +20,9 @@ Changelog:
     Wrote in the grabber code. It will now close when you press a button
     and open when you press another. It will also not be
     able to close or open after you send a certain amount of voltage.
+    
+  Developer Build 2015.0.6 …
+    Wrote the code for the buttons to run the grabbers. They are the left
+    and right bumpers. Also did the proper vesioning.
 
     
