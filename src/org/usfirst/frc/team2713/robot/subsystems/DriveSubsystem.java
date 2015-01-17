@@ -2,6 +2,7 @@ package org.usfirst.frc.team2713.robot.subsystems;
 
 import org.usfirst.frc.team2713.robot.OI;
 import org.usfirst.frc.team2713.robot.RobotMap;
+import org.usfirst.frc.team2713.robot.commands.commandBase;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -19,7 +20,6 @@ public class DriveSubsystem extends Subsystem {
     }
     
     public DriveSubsystem(){
-        
     	roboDrive.setExpiration(0.1);
     	roboDrive = new RobotDrive(RobotMap.RIGHT_DRIVE_MOTOR_ALPHA, RobotMap.RIGHT_DRIVE_MOTOR_BETA, RobotMap.LEFT_DRIVE_MOTOR_ALPHA, RobotMap.LEFT_DRIVE_MOTOR_BETA);
         roboDrive.setInvertedMotor(MotorType.kFrontLeft, true);	// invert the left side motors

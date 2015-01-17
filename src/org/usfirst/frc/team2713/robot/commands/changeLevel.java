@@ -6,6 +6,7 @@ public class changeLevel extends commandBase {
 
 	public changeLevel(Boolean upOrDown1) {
 		upOrDown = upOrDown1;
+		requires(commandBase.lift);
 	}
 
 	protected void initialize() {

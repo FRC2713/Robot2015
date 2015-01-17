@@ -20,5 +20,9 @@ public class RobotMap {
     public static final int RIGHT_DRIVE_MOTOR_ALPHA = 3;
     public static final int RIGHT_DRIVE_MOTOR_BETA = 4;
     public static final int ARM_MOTOR = 5;
+    public static final int GRAB_MOTOR = 6;
+    
+    public static final double GRAB_VOLTAGE_LIMIT = 11;
+
 
 }
