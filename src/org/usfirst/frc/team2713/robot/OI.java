@@ -1,6 +1,8 @@
 package org.usfirst.frc.team2713.robot;
 import org.usfirst.frc.team2713.robot.inputs.XBoxController;
 import org.usfirst.frc.team2713.robot.commands.changeLevel;
+import org.usfirst.frc.team2713.robot.commands.moveGrabber;
+
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 
@@ -21,6 +23,8 @@ public class OI {
     public static XBoxController xbox;
     private JoystickButton liftUp;
     private JoystickButton liftDown;
+    private JoystickButton grabberIn;
+    private JoystickButton grabberOut;
    
     
 
@@ -33,6 +37,13 @@ public class OI {
         liftDown = new JoystickButton(xbox, 1);
         liftDown.whileHeld(new changeLevel(false));
         
+        grabberIn = new JoystickButton(xbox, 5);
+        grabberIn.whileHeld(new moveGrabber(true));
+        
+        grabberOut = new JoystickButton(xbox, 6);
+        grabberOut.whileHeld(new moveGrabber(false));
+        
+      
         
     }
 
