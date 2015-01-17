@@ -1,6 +1,9 @@
 package org.usfirst.frc.team2713.robot;
-
 import org.usfirst.frc.team2713.robot.inputs.XBoxController;
+import org.usfirst.frc.team2713.robot.commands.changeLevel;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+
+
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -16,9 +19,21 @@ public class OI {
     public static final int XBOX_PORT = 4;
 
     public static XBoxController xbox;
+    private JoystickButton liftUp;
+    private JoystickButton liftDown;
+   
+    
 
     public OI() {
         xbox = new XBoxController(XBOX_PORT);
+
+        liftUp = new JoystickButton(xbox, 4);
+        liftUp.whileHeld(new changeLevel(true));
+        
+        liftDown = new JoystickButton(xbox, 1);
+        liftDown.whileHeld(new changeLevel(false));
+        
+        
     }
 
 	public XBoxController getXbox() {
