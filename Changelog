@@ -29,3 +29,7 @@ Changelog:
     Rewrote the code for the grabber so that it works with the triggers
     instead of the bumpers. Also removed the prior bumper code. It may not
     work...  
+
+  Developer Build 2015.0.7.5
+    Nate is an idiot. He set the trigger to get the wrong axis. This is
+    fixing that.
