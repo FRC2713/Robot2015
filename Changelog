@@ -23,6 +23,9 @@ Changelog:
     
   Developer Build 2015.0.6 …
     Wrote the code for the buttons to run the grabbers. They are the left
-    and right bumpers. Also did the proper vesioning.
+    and right bumpers. Also did the proper versioning.
 
-    
+  Developer Build 2015.0.6
+    Rewrote the code for the grabber so that it works with the triggers
+    instead of the bumpers. Also removed the prior bumper code. It may not
+    work...  
