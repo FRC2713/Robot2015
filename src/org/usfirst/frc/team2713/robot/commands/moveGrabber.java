@@ -7,7 +7,7 @@ import org.usfirst.frc.team2713.robot.RobotMap;
 public class moveGrabber extends commandBase{
 	
 	Boolean inOrOut;
-	double triggerPolarity = OI.xbox.getX();
+	double triggerPolarity = OI.xbox.getTriggerAxis();
 	
 	public void getTiggerPolarity(){
 		if(triggerPolarity <= -1){
