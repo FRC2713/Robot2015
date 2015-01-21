@@ -1,10 +1,25 @@
 package org.usfirst.frc.team2713.robot.commands;
 
+import org.usfirst.frc.team2713.robot.inputs.XBoxController;
+import org.usfirst.frc.team2713.robot.OI;
 import org.usfirst.frc.team2713.robot.RobotMap;
 
 public class moveGrabber extends commandBase{
 	
 	Boolean inOrOut;
+	double triggerPolarity = OI.xbox.getX();
+	
+	public void getTiggerPolarity(){
+		if(triggerPolarity <= -1){
+			inOrOut = false;
+		}
+		else if(triggerPolarity >= 1){
+			inOrOut = true;
+		}
+		else{
+			inOrOut = null;
+		}
+	}
 	
 	public moveGrabber(Boolean inOrOut1) {
 		requires(commandBase.grab);

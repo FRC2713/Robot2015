@@ -37,11 +37,6 @@ public class OI {
         liftDown = new JoystickButton(xbox, 1);
         liftDown.whileHeld(new changeLevel(false));
         
-        grabberIn = new JoystickButton(xbox, 5);
-        grabberIn.whileHeld(new moveGrabber(true));
-        
-        grabberOut = new JoystickButton(xbox, 6);
-        grabberOut.whileHeld(new moveGrabber(false));
         
       
         
