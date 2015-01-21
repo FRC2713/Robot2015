@@ -23,8 +23,6 @@ public class OI {
     public static XBoxController xbox;
     private JoystickButton liftUp;
     private JoystickButton liftDown;
-    private JoystickButton grabberIn;
-    private JoystickButton grabberOut;
    
     
 
