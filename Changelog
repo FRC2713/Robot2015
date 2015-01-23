@@ -33,3 +33,7 @@ Changelog:
   Developer Build 2015.0.7.5
     Nate is an idiot. He set the trigger to get the wrong axis. This is
     fixing that.
+
+  Developer Build 2015.0.8
+    Fixed all the bugs with the code. The robot will drive if the code is
+    uploaded to the robot. Also, you can choose which subsystems to run.
