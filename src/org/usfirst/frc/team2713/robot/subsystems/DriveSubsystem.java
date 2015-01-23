@@ -1,8 +1,9 @@
 package org.usfirst.frc.team2713.robot.subsystems;
 
-import org.usfirst.frc.team2713.robot.OI;
+import org.usfirst.frc.team2713.robot.commands.mechanumDrive;
 import org.usfirst.frc.team2713.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.RobotDrive.MotorType;
@@ -12,23 +13,34 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class DriveSubsystem extends Subsystem {
 	
     
-    RobotDrive roboDrive;
+    public RobotDrive roboDrive;
+    CANJaguar leftBack;
+    CANJaguar leftFront;
+    CANJaguar rightBack;
+    CANJaguar rightFront;
+    mechanumDrive driveCommand;
     
     public void initDefaultCommand() {
     	
     }
     
     public DriveSubsystem(){
-    	roboDrive.setExpiration(0.1);
-    	roboDrive = new RobotDrive(RobotMap.RIGHT_DRIVE_MOTOR_ALPHA, RobotMap.RIGHT_DRIVE_MOTOR_BETA, RobotMap.LEFT_DRIVE_MOTOR_ALPHA, RobotMap.LEFT_DRIVE_MOTOR_BETA);
-        roboDrive.setInvertedMotor(MotorType.kFrontLeft, true);	// invert the left side motors
-        roboDrive.setInvertedMotor(MotorType.kRearLeft, true);		// you may need to change or remove this to match your robot
+    	leftBack = new CANJaguar(RobotMap.LEFT_DRIVE_MOTOR_BACK);
+    	leftFront = new CANJaguar(RobotMap.LEFT_DRIVE_MOTOR_FRONT);
+    	rightBack = new CANJaguar(RobotMap.RIGHT_DRIVE_MOTOR_BACK);
+    	rightFront = new CANJaguar(RobotMap.RIGHT_DRIVE_MOTOR_FRONT);
+    	roboDrive = new RobotDrive(rightFront, rightBack, leftFront, leftBack);
+    	roboDrive.setInvertedMotor(MotorType.kFrontLeft, true);	// invert the left side motors
+    	roboDrive.setInvertedMotor(MotorType.kRearLeft, true);		// you may need to change or remove this to match your robot
+        roboDrive.setExpiration(0.1);
         mechanumDrive();
          
     }
     
     public void mechanumDrive() {
-    	roboDrive.mecanumDrive_Cartesian(OI.xbox.getX(), OI.xbox.getY(), OI.xbox.getZ(), 0);
+        roboDrive.setSafetyEnabled(true);
+    	driveCommand = new mechanumDrive();
+    	driveCommand.start();
     }
     
     public void TankDrive(double left, double right){ //left value, right value 

@@ -17,7 +17,7 @@ import org.usfirst.frc.team2713.robot.subsystems.ExampleSubsystem;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
-public class Robot2015 extends IterativeRobot {
+public class Robot extends IterativeRobot {
 
 	public static commandBase base = new commandBase();
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
@@ -63,7 +63,17 @@ public class Robot2015 extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
-        base.init();
+        if(RobotMap.INIT_DRIVE) {
+        	base.initDrive();
+        }
+        
+        if(RobotMap.INIT_GRAB) {
+        	//base.initGrab();
+        }
+        
+        if(RobotMap.INIT_LIFT) {
+        	//base.initLift();
+        }
     }
 
     /**

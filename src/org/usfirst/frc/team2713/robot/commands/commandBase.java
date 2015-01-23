@@ -9,11 +9,17 @@ import edu.wpi.first.wpilibj.command.Command;
 public class commandBase extends Command{
 	public static DriveSubsystem drive;
 	public static LiftSubsystem lift;
-	public static GrabberSubsystem grab;
+	public static GrabberSubsystem grab;	
 	
-	public void init() {
+	public void initLift() {
 		lift = new LiftSubsystem();
+	}
+	
+	public void initDrive() {
 		drive = new DriveSubsystem();
+	}
+	
+	public void initGrab() {
 		grab = new GrabberSubsystem();
 	}
 

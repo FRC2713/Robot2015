@@ -1,6 +1,5 @@
 package org.usfirst.frc.team2713.robot.commands;
 
-import org.usfirst.frc.team2713.robot.inputs.XBoxController;
 import org.usfirst.frc.team2713.robot.OI;
 import org.usfirst.frc.team2713.robot.RobotMap;
 
@@ -21,9 +20,8 @@ public class moveGrabber extends commandBase{
 		}
 	}
 	
-	public moveGrabber(Boolean inOrOut1) {
+	public moveGrabber() {
 		requires(commandBase.grab);
-		inOrOut = inOrOut1;
 	}
 	
     protected void initialize() {
@@ -31,10 +29,13 @@ public class moveGrabber extends commandBase{
     }
 
     protected void execute() {
+    	triggerPolarity = OI.xbox.getTriggerAxis();
     	if(inOrOut == true) {
     		grab.setLift(1);
-    	} else {
+    	} else if(inOrOut == false) {
     		grab.setLift(-1);    		
+    	} else {
+    		grab.setLift(0);    			
     	}
     }
 
