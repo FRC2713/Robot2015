@@ -37,3 +37,11 @@ Changelog:
   Developer Build 2015.0.8
     Fixed all the bugs with the code. The robot will drive if the code is
     uploaded to the robot. Also, you can choose which subsystems to run.
+  
+  Developer Build 2015.0.9
+    Created a universal CAN/Talon object. Might work, haven't tested with
+    Talons yet. Also, fixed some lasting bugs in the code.
+    
+  Developer Build 2015.1.0
+    Added a deadban and a scaler. The drive code is done.
+
