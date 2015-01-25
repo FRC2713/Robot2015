@@ -27,6 +27,10 @@ public class RobotMap {
     public static final double GRAB_VOLTAGE_LIMIT = 11;
     public static final double GRAB_RAW_LIMIT = 200;
     
+    public static final double DRIVE_SCALER = .75;
+    public static final double DRIVE_DEADBAND = 2;
+
+    
     public static final boolean INIT_DRIVE = true;
     public static final boolean INIT_LIFT = false;
     public static final boolean INIT_GRAB = false;
