@@ -19,8 +19,8 @@ public class RobotMap {
     public static final int LEFT_DRIVE_MOTOR_BACK = 4;    
     public static final int RIGHT_DRIVE_MOTOR_FRONT = 3;
     public static final int RIGHT_DRIVE_MOTOR_BACK = 5;
-    public static final int ARM_MOTOR = 6;
-    public static final int GRAB_MOTOR = 7;
+    public static final int ARM_MOTOR = 2;
+    public static final int GRAB_MOTOR = 3;
     
     public static final int XBOX_PORT = 1;
     
@@ -30,6 +30,7 @@ public class RobotMap {
     public static final double DRIVE_SCALER = .75;
     public static final double DRIVE_DEADBAND = 2;
 
+    public static final int AMMOUNT_OF_LIMIT_SWITCHES = 0;
     
     public static final boolean INIT_DRIVE = true;
     public static final boolean INIT_LIFT = false;

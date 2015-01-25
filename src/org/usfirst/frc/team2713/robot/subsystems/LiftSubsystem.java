@@ -15,7 +15,7 @@ public class LiftSubsystem  extends Subsystem{
 	
 	public LiftSubsystem() {
 		arm = new UniversalController(RobotMap.ARM_MOTOR);
-		limitSwitches = new DigitalInput[6];
+		limitSwitches = new DigitalInput[RobotMap.AMMOUNT_OF_LIMIT_SWITCHES];
 		for(int i = 0; i < limitSwitches.length; i++) {
 			limitSwitches[i] = new DigitalInput(i);
 		}

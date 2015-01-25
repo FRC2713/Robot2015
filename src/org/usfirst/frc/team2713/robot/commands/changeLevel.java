@@ -22,6 +22,11 @@ public class changeLevel extends commandBase {
 	}
 
 	protected boolean isFinished() {
+		try {
+			lift.limitSwitches[lift.currentLevel + 1].get();
+		} catch(IndexOutOfBoundsException ex) {
+			return true;
+		}
 		if (upOrDown == false && lift.currentLevel - 1 < 0) {
 			return true;
 		}
