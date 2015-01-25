@@ -25,6 +25,7 @@ public class RobotMap {
     public static final int XBOX_PORT = 1;
     
     public static final double GRAB_VOLTAGE_LIMIT = 11;
+    public static final double GRAB_RAW_LIMIT = 200;
     
     public static final boolean INIT_DRIVE = true;
     public static final boolean INIT_LIFT = false;

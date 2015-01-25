@@ -2,6 +2,7 @@ package org.usfirst.frc.team2713.robot.subsystems;
 
 import org.usfirst.frc.team2713.robot.commands.mechanumDrive;
 import org.usfirst.frc.team2713.robot.RobotMap;
+import org.usfirst.frc.team2713.robot.UniversalController;
 
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.Joystick;
@@ -14,10 +15,10 @@ public class DriveSubsystem extends Subsystem {
 	
     
     public RobotDrive roboDrive;
-    CANJaguar leftBack;
-    CANJaguar leftFront;
-    CANJaguar rightBack;
-    CANJaguar rightFront;
+    UniversalController leftBack;
+    UniversalController leftFront;
+    UniversalController rightBack;
+    UniversalController rightFront;
     mechanumDrive driveCommand;
     
     public void initDefaultCommand() {
@@ -25,11 +26,11 @@ public class DriveSubsystem extends Subsystem {
     }
     
     public DriveSubsystem(){
-    	leftBack = new CANJaguar(RobotMap.LEFT_DRIVE_MOTOR_BACK);
-    	leftFront = new CANJaguar(RobotMap.LEFT_DRIVE_MOTOR_FRONT);
-    	rightBack = new CANJaguar(RobotMap.RIGHT_DRIVE_MOTOR_BACK);
-    	rightFront = new CANJaguar(RobotMap.RIGHT_DRIVE_MOTOR_FRONT);
-    	roboDrive = new RobotDrive(rightFront, rightBack, leftFront, leftBack);
+    	leftBack = new UniversalController(RobotMap.LEFT_DRIVE_MOTOR_BACK);
+    	leftFront = new UniversalController(RobotMap.LEFT_DRIVE_MOTOR_FRONT);
+    	rightBack = new UniversalController(RobotMap.RIGHT_DRIVE_MOTOR_BACK);
+    	rightFront = new UniversalController(RobotMap.RIGHT_DRIVE_MOTOR_FRONT);
+    	roboDrive = new RobotDrive(rightFront.getProperController(), rightBack.getProperController(), leftFront.getProperController(), leftBack.getProperController());
     	roboDrive.setInvertedMotor(MotorType.kFrontLeft, true);	// invert the left side motors
     	roboDrive.setInvertedMotor(MotorType.kRearLeft, true);		// you may need to change or remove this to match your robot
         roboDrive.setExpiration(0.1);

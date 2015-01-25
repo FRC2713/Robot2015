@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2713.robot.subsystems;
 
 import org.usfirst.frc.team2713.robot.RobotMap;
+import org.usfirst.frc.team2713.robot.UniversalController;
 
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -10,10 +11,10 @@ public class LiftSubsystem  extends Subsystem{
 	
 	public DigitalInput[] limitSwitches;
 	public int currentLevel = 0;
-	CANJaguar arm;
+	UniversalController arm;
 	
 	public LiftSubsystem() {
-		arm = new CANJaguar(RobotMap.ARM_MOTOR);
+		arm = new UniversalController(RobotMap.ARM_MOTOR);
 		limitSwitches = new DigitalInput[6];
 		for(int i = 0; i < limitSwitches.length; i++) {
 			limitSwitches[i] = new DigitalInput(i);
@@ -21,7 +22,7 @@ public class LiftSubsystem  extends Subsystem{
 	}
 	
 	public void lift(int polarity) {
-		arm.set(polarity);
+		arm.getProperController().set(polarity);
 	}
 
 	public void initDefaultCommand() {

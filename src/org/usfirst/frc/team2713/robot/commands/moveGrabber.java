@@ -39,12 +39,18 @@ public class moveGrabber extends commandBase{
     	}
     }
 
-    protected boolean isFinished() {
-    	if(grab.getAmps() >= RobotMap.GRAB_VOLTAGE_LIMIT) {
-    		return true;
-    	}
-        return false;
-    }
+	protected boolean isFinished() {
+		if (grab.grab.CANOrTalon) {
+			if (grab.getAmps() >= RobotMap.GRAB_VOLTAGE_LIMIT) {
+				return true;
+			}
+		} else {
+			if(grab.getRaw() >= RobotMap.GRAB_RAW_LIMIT) {
+				return true;				
+			}
+		}
+		return false;
+	}
 
     protected void end() {
     	

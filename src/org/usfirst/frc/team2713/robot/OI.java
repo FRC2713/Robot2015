@@ -22,9 +22,7 @@ public class OI {
 	private JoystickButton liftDown;
 
 	public OI() {
-		if (RobotMap.INIT_DRIVE) {
-			xbox = new XBoxController(RobotMap.XBOX_PORT);
-		}
+		xbox = new XBoxController(RobotMap.XBOX_PORT);
 		if (RobotMap.INIT_LIFT) {
 			liftUp = new JoystickButton(xbox, 4);
 			liftUp.whileHeld(new changeLevel(true));
