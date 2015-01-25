@@ -44,4 +44,8 @@ Changelog:
     
   Developer Build 2015.1.0
     Added a deadban and a scaler. The drive code is done.
+  
+  Developer Build 2015.1.1
+    Fixed the code for the Lift and the Grabber.
+
 
