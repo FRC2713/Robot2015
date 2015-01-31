@@ -15,7 +15,7 @@ public class UniversalController {
 			thisJaguar = new CANJaguar(portNum);
 			CANOrTalon = true;
 		} catch(AllocationException ex) {
-			thisTalon = new Talon(portNum);
+			//thisTalon = new Talon(portNum);
 			CANOrTalon = false;
 		}
 	}

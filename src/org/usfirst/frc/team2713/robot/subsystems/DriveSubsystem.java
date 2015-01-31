@@ -15,10 +15,10 @@ public class DriveSubsystem extends Subsystem {
 	
     
     public RobotDrive roboDrive;
-    UniversalController leftBack;
-    UniversalController leftFront;
-    UniversalController rightBack;
-    UniversalController rightFront;
+    CANJaguar leftBack;
+    CANJaguar leftFront;
+    CANJaguar rightBack;
+    CANJaguar rightFront;
     mechanumDrive driveCommand;
     
     public void initDefaultCommand() {
@@ -26,13 +26,13 @@ public class DriveSubsystem extends Subsystem {
     }
     
     public DriveSubsystem(){
-    	leftBack = new UniversalController(RobotMap.LEFT_DRIVE_MOTOR_BACK);
-    	leftFront = new UniversalController(RobotMap.LEFT_DRIVE_MOTOR_FRONT);
-    	rightBack = new UniversalController(RobotMap.RIGHT_DRIVE_MOTOR_BACK);
-    	rightFront = new UniversalController(RobotMap.RIGHT_DRIVE_MOTOR_FRONT);
-    	roboDrive = new RobotDrive(rightFront.getProperController(), rightBack.getProperController(), leftFront.getProperController(), leftBack.getProperController());
+    	leftBack = new CANJaguar(RobotMap.LEFT_DRIVE_MOTOR_BACK);
+    	leftFront = new CANJaguar(RobotMap.LEFT_DRIVE_MOTOR_FRONT);
+    	rightBack = new CANJaguar(RobotMap.RIGHT_DRIVE_MOTOR_BACK);
+    	rightFront = new CANJaguar(RobotMap.RIGHT_DRIVE_MOTOR_FRONT);
+    	roboDrive = new RobotDrive(rightFront,rightBack,leftFront,leftBack);
     	roboDrive.setInvertedMotor(MotorType.kFrontLeft, true);	// invert the left side motors
-    	roboDrive.setInvertedMotor(MotorType.kRearLeft, true);		// you may need to change or remove this to match your robot
+    	roboDrive.setInvertedMotor(MotorType.kRearLeft, true); // you may need to change or remove this to match your robot
         roboDrive.setExpiration(0.1);
         mechanumDrive();
          
@@ -65,6 +65,8 @@ public class DriveSubsystem extends Subsystem {
         double ban = deadban;
         roboDrive.arcadeDrive(calcDeadban(move, ban), calcDeadban(rotate, ban));
     }
+    
+    
     
     private double calcDeadban(double value, double deadban) {
         int sign = (value > 0 ? 1 : -1);                //checks the sign of the value

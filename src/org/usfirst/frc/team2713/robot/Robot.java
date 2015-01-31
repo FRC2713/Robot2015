@@ -5,6 +5,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.PrintCommand;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.Preferences;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team2713.robot.commands.ExampleCommand;
 import org.usfirst.frc.team2713.robot.commands.commandBase;
@@ -19,6 +21,7 @@ public class Robot extends IterativeRobot {
 	public static commandBase base = new commandBase();
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
+	Preferences prefs;
 
 	Command autonomousCommand;
 
@@ -31,8 +34,14 @@ public class Robot extends IterativeRobot {
         System.out.println("--------------------2713-----------------------");
         System.out.println("*Awsome-sauce code produced by RyNaJaSa  inc.      *");
         System.out.println("*WARNING: might not possibly work             *");
-        System.out.println("-----------------TEST-ROBOT--------------------");    
+        System.out.println("-----------------TEST-ROBOT--------------------");
         autonomousCommand = new ExampleCommand();
+
+        prefs = Preferences.getInstance();
+        prefs.putDouble("SCALER",0.75);
+        prefs.putDouble("DEADBAND",0.1);
+        SmartDashboard.putData(Scheduler.getInstance());
+
 	}
 
 	public void disabledPeriodic() {
