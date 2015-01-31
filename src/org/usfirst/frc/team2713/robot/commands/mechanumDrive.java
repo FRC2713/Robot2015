@@ -11,6 +11,7 @@ public class mechanumDrive extends commandBase{
 	Preferences prefs;
 	double SCALER;
 	double DEADBAND;
+	double POLARITY;
 	
 	public mechanumDrive(){
 	prefs = Preferences.getInstance();
@@ -18,10 +19,11 @@ public class mechanumDrive extends commandBase{
 	
 	protected void execute() {
 
-		SCALER = prefs.getDouble("SCALER", 0.75);
+		SCALER = prefs.getDouble("SCALER", 0.6);
 		DEADBAND = prefs.getDouble("DEADBAND",0.1);
+		POLARITY = -1;
 		
-    	drive.CartesianDrive(OI.xbox.getX()*SCALER, OI.xbox.getY()*SCALER,OI.xbox.getRightX()*SCALER,DEADBAND);
+    	drive.CartesianDrive(OI.xbox.getX()*SCALER*POLARITY, OI.xbox.getY()*SCALER,OI.xbox.getRightX()*SCALER*POLARITY,DEADBAND);
     	System.out.println(OI.xbox.getY());
 	}
 	

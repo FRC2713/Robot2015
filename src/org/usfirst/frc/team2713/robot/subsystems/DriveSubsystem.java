@@ -33,6 +33,8 @@ public class DriveSubsystem extends Subsystem {
     	roboDrive = new RobotDrive(rightFront,rightBack,leftFront,leftBack);
     	roboDrive.setInvertedMotor(MotorType.kFrontLeft, true);	// invert the left side motors
     	roboDrive.setInvertedMotor(MotorType.kRearLeft, true); // you may need to change or remove this to match your robot
+    	roboDrive.setInvertedMotor(MotorType.kFrontRight, false);
+    	roboDrive.setInvertedMotor(MotorType.kRearRight, false);
         roboDrive.setExpiration(0.1);
         mechanumDrive();
          
