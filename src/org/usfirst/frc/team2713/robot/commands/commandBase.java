@@ -10,13 +10,17 @@ public class commandBase extends Command{
 	public static DriveSubsystem drive;
 	public static LiftSubsystem lift;
 	public static GrabberSubsystem grab;	
+	public boolean isCreated;
 	
 	public void initLift() {
 		lift = new LiftSubsystem();
 	}
 	
 	public void initDrive() {
-		drive = new DriveSubsystem();
+		if(drive == null){
+			drive = new DriveSubsystem();
+		}
+		
 	}
 	
 	public void initGrab() {
