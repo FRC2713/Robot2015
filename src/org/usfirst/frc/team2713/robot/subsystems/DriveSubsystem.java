@@ -66,6 +66,11 @@ public class DriveSubsystem extends Subsystem {
         roboDrive.arcadeDrive(calcDeadban(move, ban), calcDeadban(rotate, ban));
     }
     
+    public void CartesianDrive(double x, double y, double rotate, double deadban){
+    	double ban = deadban;
+    	roboDrive.mecanumDrive_Cartesian(calcDeadban(x, ban), calcDeadban(y,ban), calcDeadban(rotate,ban), 0);
+    }
+    
     
     
     private double calcDeadban(double value, double deadban) {
@@ -78,7 +83,6 @@ public class DriveSubsystem extends Subsystem {
         }
     }
     
-    public void Move(double speed){
-        roboDrive.drive(speed, 0);
-    }
 }
+
+

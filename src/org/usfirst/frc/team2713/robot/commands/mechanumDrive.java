@@ -21,7 +21,7 @@ public class mechanumDrive extends commandBase{
 		SCALER = prefs.getDouble("SCALER", 0.75);
 		DEADBAND = prefs.getDouble("DEADBAND",0.1);
 		
-    	drive.roboDrive.mecanumDrive_Cartesian(OI.xbox.getX()*SCALER, OI.xbox.getY()*SCALER,OI.xbox.getRightX()*SCALER,0);
+    	drive.CartesianDrive(OI.xbox.getX()*SCALER, OI.xbox.getY()*SCALER,OI.xbox.getRightX()*SCALER,DEADBAND);
     	System.out.println(OI.xbox.getY());
 	}
 	
