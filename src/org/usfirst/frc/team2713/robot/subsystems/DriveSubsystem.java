@@ -5,6 +5,7 @@ import org.usfirst.frc.team2713.robot.RobotMap;
 import org.usfirst.frc.team2713.robot.UniversalController;
 
 import edu.wpi.first.wpilibj.CANJaguar;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.RobotDrive.MotorType;
@@ -20,6 +21,7 @@ public class DriveSubsystem extends Subsystem {
     UniversalController rightBack;
     UniversalController rightFront;
     mechanumDrive driveCommand;
+    public Encoder thisEncoder;
     
     public void initMechanumDrive() {
         mechanumDrive();
@@ -36,6 +38,8 @@ public class DriveSubsystem extends Subsystem {
     	roboDrive.setInvertedMotor(MotorType.kFrontRight, false);
     	roboDrive.setInvertedMotor(MotorType.kRearRight, false);
         roboDrive.setExpiration(0.1);
+        thisEncoder = new Encoder(RobotMap.ENCODER_A_CHANNEL, RobotMap.ENCODER_B_CHANNEL);
+        thisEncoder.setDistancePerPulse(18.4);
          
     }
     
@@ -88,6 +92,13 @@ public class DriveSubsystem extends Subsystem {
 	protected void initDefaultCommand() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void move(double speed) {
+    	rightFront.getProperController().set(speed);
+    	rightBack.getProperController().set(speed);
+    	leftFront.getProperController().set(speed);
+    	leftBack.getProperController().set(speed);
 	}
     
 }

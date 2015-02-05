@@ -25,7 +25,7 @@ public class moveGrabber extends commandBase {
 	}
 
 	public moveGrabber() {
-		// requires(commandBase.grab);
+
 	}
 
 	protected void initialize() {
