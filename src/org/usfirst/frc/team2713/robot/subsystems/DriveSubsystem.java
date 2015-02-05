@@ -15,28 +15,27 @@ public class DriveSubsystem extends Subsystem {
 	
     
     public RobotDrive roboDrive;
-    CANJaguar leftBack;
-    CANJaguar leftFront;
-    CANJaguar rightBack;
-    CANJaguar rightFront;
+    UniversalController leftBack;
+    UniversalController leftFront;
+    UniversalController rightBack;
+    UniversalController rightFront;
     mechanumDrive driveCommand;
     
-    public void initDefaultCommand() {
-    	
+    public void initMechanumDrive() {
+        mechanumDrive();
     }
     
     public DriveSubsystem(){
-    	leftBack = new CANJaguar(RobotMap.LEFT_DRIVE_MOTOR_BACK);
-    	leftFront = new CANJaguar(RobotMap.LEFT_DRIVE_MOTOR_FRONT);
-    	rightBack = new CANJaguar(RobotMap.RIGHT_DRIVE_MOTOR_BACK);
-    	rightFront = new CANJaguar(RobotMap.RIGHT_DRIVE_MOTOR_FRONT);
-    	roboDrive = new RobotDrive(rightFront,rightBack,leftFront,leftBack);
+    	leftBack = new UniversalController(RobotMap.LEFT_DRIVE_MOTOR_BACK);
+    	leftFront = new UniversalController(RobotMap.LEFT_DRIVE_MOTOR_FRONT);
+    	rightBack = new UniversalController(RobotMap.RIGHT_DRIVE_MOTOR_BACK);
+    	rightFront = new UniversalController(RobotMap.RIGHT_DRIVE_MOTOR_FRONT);
+    	roboDrive = new RobotDrive(rightFront.getProperController(),rightBack.getProperController(),leftFront.getProperController(),leftBack.getProperController());
     	roboDrive.setInvertedMotor(MotorType.kFrontLeft, true);	// invert the left side motors
     	roboDrive.setInvertedMotor(MotorType.kRearLeft, true); // you may need to change or remove this to match your robot
     	roboDrive.setInvertedMotor(MotorType.kFrontRight, false);
     	roboDrive.setInvertedMotor(MotorType.kRearRight, false);
         roboDrive.setExpiration(0.1);
-        mechanumDrive();
          
     }
     
@@ -84,6 +83,12 @@ public class DriveSubsystem extends Subsystem {
             return (value - deadban) * sign;            //returns vale minus deadban
         }
     }
+
+	@Override
+	protected void initDefaultCommand() {
+		// TODO Auto-generated method stub
+		
+	}
     
 }
 

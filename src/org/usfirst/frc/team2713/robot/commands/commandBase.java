@@ -20,6 +20,7 @@ public class commandBase extends Command{
 		if(drive == null){
 			drive = new DriveSubsystem();
 		}
+		drive.initMechanumDrive();
 		
 	}
 	
