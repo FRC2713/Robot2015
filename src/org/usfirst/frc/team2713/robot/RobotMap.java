@@ -39,6 +39,8 @@ public class RobotMap {
     
     public static final int ENCODER_B_CHANNEL = 1;
     public static final int ENCODER_A_CHANNEL = 1;
+    
+    public static final int TIME_TO_CLOSE_OR_OPEN = 6;
 
 
 

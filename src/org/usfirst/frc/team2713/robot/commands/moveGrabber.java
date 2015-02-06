@@ -3,11 +3,14 @@ package org.usfirst.frc.team2713.robot.commands;
 import org.usfirst.frc.team2713.robot.OI;
 import org.usfirst.frc.team2713.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.Timer;
+
 public class moveGrabber extends commandBase {
 
 	Boolean inOrOut;
 	double triggerPolarity = OI.xbox.getTriggerAxis();
-
+	
+	
 	public void getTiggerPolarity() {
 		if (OI.xbox.getTriggerAxis() != 0 && OI.xbox.getZ() != 0) {
 			inOrOut = null;
