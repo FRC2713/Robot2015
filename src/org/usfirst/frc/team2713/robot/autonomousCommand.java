@@ -28,7 +28,7 @@ public class autonomousCommand extends CommandGroup {
 			}
 		}
 		addSequential(new turn90Right());
-		addSequential(new goForward(8.91666));
+		addSequential(new goForward(5.91666));
 		addSequential(new closeOrOpenGrabber(1));
 		
 	}

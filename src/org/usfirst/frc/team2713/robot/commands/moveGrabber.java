@@ -9,8 +9,7 @@ public class moveGrabber extends commandBase {
 
 	Boolean inOrOut;
 	double triggerPolarity = OI.xbox.getTriggerAxis();
-	
-	
+
 	public void getTiggerPolarity() {
 		if (OI.xbox.getTriggerAxis() != 0 && OI.xbox.getZ() != 0) {
 			inOrOut = null;
@@ -21,7 +20,7 @@ public class moveGrabber extends commandBase {
 		} else if (OI.xbox.getZ() != 0) {
 			inOrOut = false;
 			triggerPolarity = OI.xbox.getZ();
-		} else if(OI.xbox.getTriggerAxis() == 0 && OI.xbox.getZ() == 0) {
+		} else if (OI.xbox.getTriggerAxis() == 0 && OI.xbox.getZ() == 0) {
 			triggerPolarity = 0;
 			inOrOut = null;
 		}
@@ -38,25 +37,13 @@ public class moveGrabber extends commandBase {
 	protected void execute() {
 		triggerPolarity = OI.xbox.getTriggerAxis();
 		getTiggerPolarity();
-		if (grab.grab.CANOrTalon) {
-			// if (grab.getAmps() <= RobotMap.GRAB_VOLTAGE_LIMIT) {
+		if (grab.armClosed.get()) {
 			if (inOrOut != null && inOrOut == true) {
 				grab.setLift(1);
 			} else if (inOrOut != null && inOrOut == false) {
 				grab.setLift(-1);
 			} else {
 				grab.setLift(0);
-			}
-			// }
-		} else {
-			if (grab.getRaw() <= RobotMap.GRAB_RAW_LIMIT) {
-				if (inOrOut != null && inOrOut == true) {
-					grab.setLift(1);
-				} else if (inOrOut != null && inOrOut == false) {
-					grab.setLift(-1);
-				} else {
-					grab.setLift(0);
-				}
 			}
 		}
 	}

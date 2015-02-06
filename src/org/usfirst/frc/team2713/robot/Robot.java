@@ -46,7 +46,7 @@ public class Robot extends IterativeRobot {
         System.out.println("*Awsome-sauce code produced by RyNaJaSa  inc.      *");
         System.out.println("*WARNING: might not possibly work             *");
         System.out.println("-----------------TEST-ROBOT--------------------");
-        autonomousCommand = new ExampleCommand();
+        autonomousCommand = new autonomousCommand();
         
         frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
         session = NIVision.IMAQdxOpenCamera("cam0",

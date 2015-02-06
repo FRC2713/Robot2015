@@ -21,16 +21,10 @@ public class closeOrOpenGrabber extends commandBase{
 	}
 	
 	protected boolean isFinished() {
-		if(grab.grab.CANOrTalon) {
-			if(grab.getAmps() > RobotMap.GRAB_VOLTAGE_LIMIT) {
-				return true;
-			}
-		} else {
-			if(grab.getRaw() > RobotMap.GRAB_RAW_LIMIT) {
-				return true;
-			}
+		if (grab.armClosed.get() && direction > 0) {
+			return true;
 		}
-		if(time.get() > RobotMap.TIME_TO_CLOSE_OR_OPEN) {
+		if(time.get() > RobotMap.TIME_TO_CLOSE_OR_OPEN && direction < 0) {
 			return true;
 		}
 		return false;
