@@ -23,6 +23,8 @@ public class RobotMap {
     public static final int RIGHT_DRIVE_MOTOR_BACK = 5;
     public static final int ARM_MOTOR = 6;
     public static final int GRAB_MOTOR = 7;
+    //public static final int A_CHANNEL;
+    //public static final int B_CHANNEL;
     
     public static final int XBOX_PORT = 1;
     
@@ -35,7 +37,7 @@ public class RobotMap {
     public static final boolean INIT_LIFT = false;
     public static final boolean INIT_GRAB = false;
 
-
+    public int crateNum = 3;
 
 
 }

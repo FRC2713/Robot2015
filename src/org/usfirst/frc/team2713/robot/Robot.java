@@ -1,3 +1,4 @@
+
 package org.usfirst.frc.team2713.robot;
 
 import edu.wpi.first.wpilibj.CameraServer;
@@ -12,6 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import com.ni.vision.NIVision;
 import com.ni.vision.NIVision.Image;
 
+import org.usfirst.frc.team2713.robot.commands.Autonomous;
 import org.usfirst.frc.team2713.robot.commands.ExampleCommand;
 import org.usfirst.frc.team2713.robot.commands.commandBase;
 import org.usfirst.frc.team2713.robot.subsystems.ExampleSubsystem;
@@ -34,7 +36,7 @@ public class Robot extends IterativeRobot {
     Image frame;
 	
 
-	Command autonomousCommand;
+	Autonomous autonomousCommand;
 
 	/**
 	 * This function is run when the robot is first started up and should be used for any initialization code.
@@ -46,7 +48,6 @@ public class Robot extends IterativeRobot {
         System.out.println("*Awsome-sauce code produced by RyNaJaSa  inc.      *");
         System.out.println("*WARNING: might not possibly work             *");
         System.out.println("-----------------TEST-ROBOT--------------------");
-        autonomousCommand = new ExampleCommand();
         
         frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
         session = NIVision.IMAQdxOpenCamera("cam0",
@@ -56,7 +57,9 @@ public class Robot extends IterativeRobot {
         prefs = Preferences.getInstance();
         prefs.putDouble("SCALER",0.6);
         prefs.putDouble("DEADBAND",0.1);
+        prefs.putInt("CRATE_NUM",3);
         SmartDashboard.putData(Scheduler.getInstance());
+        autonomousCommand = new Autonomous(base, prefs.getInt("CRATE_NUM", 3));
         
        
 	}
