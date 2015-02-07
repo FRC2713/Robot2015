@@ -30,6 +30,7 @@ public class commandBase extends Command {
 		if (grab == null) {
 			grab = new GrabberSubsystem();
 		}
+		grab.intiCommand();
 	}
 
 	protected void initialize() {
