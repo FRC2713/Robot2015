@@ -5,6 +5,7 @@ import org.usfirst.frc.team2713.robot.RobotMap;
 import org.usfirst.frc.team2713.robot.UniversalController;
 
 import edu.wpi.first.wpilibj.CANJaguar;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.RobotDrive.MotorType;
@@ -20,9 +21,10 @@ public class DriveSubsystem extends Subsystem {
     UniversalController rightBack;
     UniversalController rightFront;
     mechanumDrive driveCommand;
+    public Encoder thisEncoder;
     
-    public void initDefaultCommand() {
-    	
+    public void initMechanumDrive() {
+        mechanumDrive();
     }
     
     public DriveSubsystem(){
@@ -30,11 +32,14 @@ public class DriveSubsystem extends Subsystem {
     	leftFront = new UniversalController(RobotMap.LEFT_DRIVE_MOTOR_FRONT);
     	rightBack = new UniversalController(RobotMap.RIGHT_DRIVE_MOTOR_BACK);
     	rightFront = new UniversalController(RobotMap.RIGHT_DRIVE_MOTOR_FRONT);
-    	roboDrive = new RobotDrive(rightFront.getProperController(), rightBack.getProperController(), leftFront.getProperController(), leftBack.getProperController());
+    	roboDrive = new RobotDrive(rightFront.getProperController(),rightBack.getProperController(),leftFront.getProperController(),leftBack.getProperController());
     	roboDrive.setInvertedMotor(MotorType.kFrontLeft, true);	// invert the left side motors
-    	roboDrive.setInvertedMotor(MotorType.kRearLeft, true);		// you may need to change or remove this to match your robot
+    	roboDrive.setInvertedMotor(MotorType.kRearLeft, true); // you may need to change or remove this to match your robot
+    	roboDrive.setInvertedMotor(MotorType.kFrontRight, false);
+    	roboDrive.setInvertedMotor(MotorType.kRearRight, false);
         roboDrive.setExpiration(0.1);
-        mechanumDrive();
+        //thisEncoder = new Encoder(RobotMap.ENCODER_A_CHANNEL, RobotMap.ENCODER_B_CHANNEL);
+        //thisEncoder.setDistancePerPulse(18.4);
          
     }
     
@@ -66,6 +71,13 @@ public class DriveSubsystem extends Subsystem {
         roboDrive.arcadeDrive(calcDeadban(move, ban), calcDeadban(rotate, ban));
     }
     
+    public void CartesianDrive(double x, double y, double rotate, double deadban){
+    	double ban = deadban;
+    	roboDrive.mecanumDrive_Cartesian(calcDeadban(x, ban), calcDeadban(y,ban), calcDeadban(rotate,ban), 0);
+    }
+    
+    
+    
     private double calcDeadban(double value, double deadban) {
         int sign = (value > 0 ? 1 : -1);                //checks the sign of the value
         value *= sign;                                  //changes the value to positive
@@ -75,8 +87,20 @@ public class DriveSubsystem extends Subsystem {
             return (value - deadban) * sign;            //returns vale minus deadban
         }
     }
+
+	@Override
+	protected void initDefaultCommand() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public void move(double speed) {
+    	rightFront.getProperController().set(speed);
+    	rightBack.getProperController().set(speed);
+    	leftFront.getProperController().set(speed);
+    	leftBack.getProperController().set(speed);
+	}
     
-    public void Move(double speed){
-        roboDrive.drive(speed, 0);
-    }
 }
+
+
