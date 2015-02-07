@@ -26,8 +26,10 @@ public class OI {
 		if (RobotMap.INIT_LIFT) {
 			liftUp = new JoystickButton(xbox, 4);
 			liftUp.whileHeld(new changeLevel(true));
+			liftUp.whenReleased(new changeLevel(null));
 			liftDown = new JoystickButton(xbox, 1);
 			liftDown.whileHeld(new changeLevel(false));
+			liftDown.whenReleased(new changeLevel(null));
 		}
 
 	}

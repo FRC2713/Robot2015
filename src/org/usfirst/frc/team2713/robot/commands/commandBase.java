@@ -6,36 +6,39 @@ import org.usfirst.frc.team2713.robot.subsystems.LiftSubsystem;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class commandBase extends Command{
+public class commandBase extends Command {
 	public static DriveSubsystem drive;
 	public static LiftSubsystem lift;
-	public static GrabberSubsystem grab;	
+	public static GrabberSubsystem grab;
 	public boolean isCreated;
-	
+
 	public void initLift() {
-		lift = new LiftSubsystem();
+		if (lift == null) {
+			lift = new LiftSubsystem();
+		}
 	}
-	
+
 	public void initDrive() {
-		if(drive == null){
+		if (drive == null) {
 			drive = new DriveSubsystem();
 		}
 		drive.initMechanumDrive();
-		
+
 	}
-	
+
 	public void initGrab() {
-		grab = new GrabberSubsystem();
+		if (grab == null) {
+			grab = new GrabberSubsystem();
+		}
+		grab.intiCommand();
 	}
 
-	
 	protected void initialize() {
-			
-	}
 
+	}
 
 	protected void execute() {
-	
+
 	}
 
 	@Override
@@ -47,12 +50,12 @@ public class commandBase extends Command{
 	@Override
 	protected void end() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	protected void interrupted() {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

@@ -26,14 +26,20 @@ public class RobotMap {
     
     public static final int XBOX_PORT = 1;
     
-    public static final double GRAB_VOLTAGE_LIMIT = 11;
-    public static final double GRAB_RAW_LIMIT = 200;
-    
-    public static final int AMMOUNT_OF_LIMIT_SWITCHES = 0;
+    public static final int NUMBER_OF_LIMIT_SWITCHES = 2;
     
     public static final boolean INIT_DRIVE = true;
-    public static final boolean INIT_LIFT = false;
-    public static final boolean INIT_GRAB = false;
+    public static final boolean INIT_LIFT = true;
+    public static final boolean INIT_GRAB = true;
+        
+    public static final int AMMOUNT_OF_CRATES_TO_GET_IN_AUTONOMOUS = 1;
+    
+    public static final int ENCODER_B_CHANNEL = 1;
+    public static final int ENCODER_A_CHANNEL = 2;
+    
+    public static final int TIME_TO_CLOSE_OR_OPEN = 6;
+    
+    public static final int ARM_LIMIT_SWITCH_NUM = 5;
 
 
 
