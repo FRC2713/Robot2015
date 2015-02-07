@@ -34,8 +34,8 @@ public class RobotMap {
         
     public static final int AMMOUNT_OF_CRATES_TO_GET_IN_AUTONOMOUS = 1;
     
-    public static final int ENCODER_B_CHANNEL = 1;
-    public static final int ENCODER_A_CHANNEL = 2;
+    public static final int ENCODER_B_CHANNEL = 8;
+    public static final int ENCODER_A_CHANNEL = 9;
     
     public static final int TIME_TO_CLOSE_OR_OPEN = 6;
     

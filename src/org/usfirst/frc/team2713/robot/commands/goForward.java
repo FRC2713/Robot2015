@@ -23,13 +23,12 @@ public class goForward extends commandBase{
 	}
 
 	protected boolean isFinished() {
-//        if(drive.thisEncoder.getDistance() > distance*12) {
-//            drive.move(0);
-//            return true;
-//        }else {
-//            return false;
-//        }
-    	  return false;
+        if(drive.thisEncoder.getDistance() > distance*12) {
+            drive.move(0);
+            return true;
+        }else {
+            return false;
+        }
     }
 	
 }
