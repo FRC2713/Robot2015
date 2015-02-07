@@ -10,7 +10,7 @@ public class goForward extends commandBase{
 	public goForward(double distance1) {
 		time = new Timer();
 		distance = distance1;
-		drive.thisEncoder.reset();
+		//drive.thisEncoder.reset();
 	}
 	
     protected void initialize() {
@@ -21,14 +21,15 @@ public class goForward extends commandBase{
 	protected void execute() {
 		drive.move(.7);
 	}
-	
-    protected boolean isFinished() {
-        if(drive.thisEncoder.getDistance() > distance*12) {
-            drive.move(0);
-            return true;
-        }else {
-            return false;
-        }
+
+	protected boolean isFinished() {
+//        if(drive.thisEncoder.getDistance() > distance*12) {
+//            drive.move(0);
+//            return true;
+//        }else {
+//            return false;
+//        }
+    	  return false;
     }
 	
 }

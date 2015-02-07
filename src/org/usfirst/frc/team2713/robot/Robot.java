@@ -89,12 +89,12 @@ public class Robot extends IterativeRobot {
 			base.initDrive();
 		}
 
-		if (RobotMap.INIT_GRAB) {
-			base.initGrab();
-		}
-
 		if (RobotMap.INIT_LIFT) {
 			base.initLift();
+		}
+		
+		if (RobotMap.INIT_GRAB) {
+			base.initGrab();
 		}
 					
 		

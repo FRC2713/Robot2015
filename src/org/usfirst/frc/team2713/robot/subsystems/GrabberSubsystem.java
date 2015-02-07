@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.util.AllocationException;
 
 public class GrabberSubsystem extends Subsystem {
 
@@ -19,7 +20,9 @@ public class GrabberSubsystem extends Subsystem {
 		grab = new UniversalController(RobotMap.GRAB_MOTOR);
 		graber = new moveGrabber();
 		graber.start();
-		armClosed = new DigitalInput(RobotMap.ARM_LIMIT_SWITCH_NUM);
+		if (armClosed == null) {
+			armClosed = new DigitalInput(RobotMap.ARM_LIMIT_SWITCH_NUM);
+		}
 	}
 
 	protected void initDefaultCommand() {
