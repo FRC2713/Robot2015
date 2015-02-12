@@ -1,10 +1,8 @@
 package org.usfirst.frc.team2713.robot.commands;
 
-import org.usfirst.frc.team2713.robot.*;
+
 import org.usfirst.frc.team2713.robot.OI;
 import edu.wpi.first.wpilibj.Preferences;
-import edu.wpi.first.wpilibj.DriverStation;
-import org.usfirst.frc.team2713.robot.RobotMap;
 
 public class mechanumDrive extends commandBase{
 	

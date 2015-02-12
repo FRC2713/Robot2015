@@ -1,6 +1,5 @@
 package org.usfirst.frc.team2713.robot;
 
-import edu.wpi.first.wpilibj.Preferences;
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -32,8 +31,11 @@ public class RobotMap {
         
     public static final int AMMOUNT_OF_CRATES_TO_GET_IN_AUTONOMOUS = 1;
     
-    public static final int ENCODER_B_CHANNEL = 1;
-    public static final int ENCODER_A_CHANNEL = 2;
+    public static final int DRIVE_ENCODER_B_CHANNEL = 1;
+    public static final int DRIVE_ENCODER_A_CHANNEL = 2;
+    
+    public static final int LIFT_ENCODER_A_CHANNEL = 3;
+    public static final int LIFT_ENCODER_B_CHANNEL = 4;
     
     public static final int TIME_TO_CLOSE_OR_OPEN = 6;
     

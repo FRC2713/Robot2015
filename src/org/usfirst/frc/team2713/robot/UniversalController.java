@@ -1,7 +1,7 @@
 package org.usfirst.frc.team2713.robot;
 
 import edu.wpi.first.wpilibj.CANJaguar;
-import edu.wpi.first.wpilibj.SensorBase;
+
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.util.AllocationException;

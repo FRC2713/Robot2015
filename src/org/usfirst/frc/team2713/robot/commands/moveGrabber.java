@@ -1,9 +1,6 @@
 package org.usfirst.frc.team2713.robot.commands;
 
 import org.usfirst.frc.team2713.robot.OI;
-import org.usfirst.frc.team2713.robot.RobotMap;
-
-import edu.wpi.first.wpilibj.Timer;
 
 public class moveGrabber extends commandBase {
 

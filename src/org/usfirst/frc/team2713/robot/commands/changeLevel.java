@@ -1,7 +1,5 @@
 package org.usfirst.frc.team2713.robot.commands;
 
-import org.usfirst.frc.team2713.robot.RobotMap;
-
 public class changeLevel extends commandBase {
 
 	Boolean upOrDown; // True is up, False is down
@@ -26,25 +24,25 @@ public class changeLevel extends commandBase {
 		lift.distanceTraveled += lift.thisEncoder.getDistance();
 	}
 
-	protected boolean isFinished() { //Make it so you can go down if you don't touch the bottom level
+	protected boolean isFinished() { // Make it so you can go down if you don't touch the bottom level
 		if (upOrDown == null) {
 			lift.lift(0);
-			return true; //Limit Switch to tell when you are at the bottom, and reset the counter
+			return true; // Limit Switch to tell when you are at the bottom, and reset the counter
 		}
-		if(upOrDown == false && lift.distanceTraveled <= 0) {
+		if (upOrDown == false && lift.distanceTraveled <= 0) {
 			lift.lift(0);
 			return true;
 		}
-		if(upOrDown == true && lift.heightOfArm >= lift.distanceTraveled) {
+		if (upOrDown == true && lift.heightOfArm >= lift.distanceTraveled) {
 			lift.lift(0);
 			return true;
 		}
-		if(upOrDown == true && lift.distanceTraveled >= lift.totesLocation[lift.lastPossition + 1]) {
+		if (upOrDown == true && lift.distanceTraveled >= lift.totesLocation[lift.lastPossition + 1]) {
 			lift.lastPossition++;
 			lift.lift(0);
 			return true;
 		}
-		if(upOrDown == false && lift.distanceTraveled <= lift.totesLocation[lift.lastPossition - 1]) {
+		if (upOrDown == false && lift.distanceTraveled <= lift.totesLocation[lift.lastPossition - 1]) {
 			lift.lastPossition--;
 			lift.lift(0);
 			return true;

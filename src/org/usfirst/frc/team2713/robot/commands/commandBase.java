@@ -23,7 +23,6 @@ public class commandBase extends Command {
 			drive = new DriveSubsystem();
 		}
 		drive.initMechanumDrive();
-
 	}
 
 	public void initGrab() {

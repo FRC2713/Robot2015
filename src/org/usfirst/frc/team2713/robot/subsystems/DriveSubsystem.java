@@ -1,10 +1,10 @@
 package org.usfirst.frc.team2713.robot.subsystems;
 
 import org.usfirst.frc.team2713.robot.commands.mechanumDrive;
+
 import org.usfirst.frc.team2713.robot.RobotMap;
 import org.usfirst.frc.team2713.robot.UniversalController;
 
-import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -38,7 +38,7 @@ public class DriveSubsystem extends Subsystem {
     	roboDrive.setInvertedMotor(MotorType.kFrontRight, false);
     	roboDrive.setInvertedMotor(MotorType.kRearRight, false);
         roboDrive.setExpiration(0.1);
-        thisEncoder = new Encoder(RobotMap.ENCODER_A_CHANNEL, RobotMap.ENCODER_B_CHANNEL);
+        thisEncoder = new Encoder(RobotMap.DRIVE_ENCODER_A_CHANNEL, RobotMap.DRIVE_ENCODER_B_CHANNEL);
         thisEncoder.setDistancePerPulse(18.4);
          
     }

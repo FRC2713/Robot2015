@@ -1,9 +1,9 @@
 package org.usfirst.frc.team2713.robot.subsystems;
 
 import org.usfirst.frc.team2713.robot.RobotMap;
+
 import org.usfirst.frc.team2713.robot.UniversalController;
 
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -20,7 +20,7 @@ public class LiftSubsystem extends Subsystem {
 
 	public LiftSubsystem() {
 		arm = new UniversalController(RobotMap.ARM_MOTOR);
-        thisEncoder = new Encoder(RobotMap.ENCODER_A_CHANNEL, RobotMap.ENCODER_B_CHANNEL);
+        thisEncoder = new Encoder(RobotMap.LIFT_ENCODER_A_CHANNEL, RobotMap.LIFT_ENCODER_B_CHANNEL);
         thisEncoder.setDistancePerPulse(11);
         totesLocation = new double[6];
         for(int i = 0; i < 6; i++) {
