@@ -15,6 +15,7 @@ public class changeLevel extends commandBase {
 	}
 
 	protected void execute() {
+		lift.thisEncoder.reset();
 		if (upOrDown == null) {
 			lift.lift(0);
 		} else if (upOrDown == true) {
@@ -22,32 +23,31 @@ public class changeLevel extends commandBase {
 		} else if (upOrDown == false) {
 			lift.lift(-1);
 		}
+		lift.distanceTraveled += lift.thisEncoder.getDistance();
 	}
 
 	protected boolean isFinished() { //Make it so you can go down if you don't touch the bottom level
 		if (upOrDown == null) {
-			return true;
+			lift.lift(0);
+			return true; //Limit Switch to tell when you are at the bottom, and reset the counter
 		}
-		if (upOrDown == true && lift.currentLevel + 1 >= RobotMap.NUMBER_OF_LIMIT_SWITCHES) {
+		if(upOrDown == false && lift.distanceTraveled <= 0) {
 			lift.lift(0);
 			return true;
 		}
-		if (upOrDown == false && lift.currentLevel - 1 < 0) {
+		if(upOrDown == true && lift.heightOfArm >= lift.distanceTraveled) {
 			lift.lift(0);
 			return true;
 		}
-		if (upOrDown == true) {
-			if (lift.limitSwitches[lift.currentLevel + 1].get() == false) {
-				lift.currentLevel++;
-				lift.lift(0);
-				return true;
-			}
-		} else {
-			if (lift.limitSwitches[lift.currentLevel - 1].get() == false) {
-				lift.currentLevel--;
-				lift.lift(0);
-				return true;
-			}
+		if(upOrDown == true && lift.distanceTraveled >= lift.totesLocation[lift.lastPossition + 1]) {
+			lift.lastPossition++;
+			lift.lift(0);
+			return true;
+		}
+		if(upOrDown == false && lift.distanceTraveled <= lift.totesLocation[lift.lastPossition - 1]) {
+			lift.lastPossition--;
+			lift.lift(0);
+			return true;
 		}
 		return false;
 	}
