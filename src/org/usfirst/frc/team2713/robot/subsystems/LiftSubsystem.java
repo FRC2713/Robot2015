@@ -4,6 +4,7 @@ import org.usfirst.frc.team2713.robot.RobotMap;
 
 import org.usfirst.frc.team2713.robot.UniversalController;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -17,12 +18,17 @@ public class LiftSubsystem extends Subsystem {
     public double heightOfArm = 72.8;
     public final double[] totesLocation;
     public final double toteHeight = 12.1;
+    public DigitalInput limitSwitchBottom;
+    public DigitalInput limitSwitchTop;
+
 
 	public LiftSubsystem() {
 		arm = new UniversalController(RobotMap.ARM_MOTOR);
         thisEncoder = new Encoder(RobotMap.LIFT_ENCODER_A_CHANNEL, RobotMap.LIFT_ENCODER_B_CHANNEL);
         thisEncoder.setDistancePerPulse(11);
         totesLocation = new double[6];
+       limitSwitchBottom = new DigitalInput(RobotMap.BOTTOM_LIMIT_SWITCH_LIFT); 
+       limitSwitchTop = new DigitalInput(RobotMap.TOP_LIMIT_SWITCH_LIFT);
         for(int i = 0; i < 6; i++) {
         	totesLocation[i] = toteHeight * i; 
         }

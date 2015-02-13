@@ -29,6 +29,16 @@ public class changeLevel extends commandBase {
 			lift.lift(0);
 			return true; // Limit Switch to tell when you are at the bottom, and reset the counter
 		}
+		if (lift.limitSwitchBottom.get()){
+			lift.lift(0);
+			lift.distanceTraveled = 0;
+			return true;
+		}
+		if (lift.limitSwitchTop.get()){
+			lift.lift(0);
+			lift.distanceTraveled = (int) lift.heightOfArm;
+			return true;
+		}
 		if (upOrDown == false && lift.distanceTraveled <= 0) {
 			lift.lift(0);
 			return true;

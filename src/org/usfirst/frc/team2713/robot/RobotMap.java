@@ -40,6 +40,8 @@ public class RobotMap {
     public static final int TIME_TO_CLOSE_OR_OPEN = 6;
     
     public static final int ARM_LIMIT_SWITCH_NUM = 5;
+    public static final int BOTTOM_LIMIT_SWITCH_LIFT = 7;
+    public static final int TOP_LIMIT_SWITCH_LIFT = 8;
 
 
 
