@@ -13,15 +13,15 @@ public class changeLevel extends commandBase {
 	}
 
 	protected void execute() {
-		lift.thisEncoder.reset();
 		if (upOrDown == null) {
 			lift.lift(0);
-		} else if (upOrDown == true) {
+		} else if (upOrDown == true && !lift.atTop) {
+			lift.atBottom = false;
 			lift.lift(1);
-		} else if (upOrDown == false) {
+		} else if (upOrDown == false && !lift.atBottom) {
+			lift.atTop = false;
 			lift.lift(-1);
 		}
-		lift.distanceTraveled += lift.thisEncoder.getDistance();
 	}
 
 	protected boolean isFinished() { // Make it so you can go down if you don't touch the bottom level
@@ -29,30 +29,36 @@ public class changeLevel extends commandBase {
 			lift.lift(0);
 			return true; // Limit Switch to tell when you are at the bottom, and reset the counter
 		}
-		if (lift.limitSwitchBottom.get()){
+		if (upOrDown == false && !lift.limitSwitchBottom.get()) {
 			lift.lift(0);
-			lift.distanceTraveled = 0;
+			lift.atBottom = true;
+			lift.currentLevel = 0;
+			lift.thisEncoder.reset();
 			return true;
 		}
-		if (lift.limitSwitchTop.get()){
+		if (lift.atBottom == true && upOrDown == false && lift.thisEncoder.getDistance() <= 0) {
 			lift.lift(0);
-			lift.distanceTraveled = (int) lift.heightOfArm;
-			return true;
+			lift.atBottom = true;
+			lift.currentLevel = 0;
+			lift.thisEncoder.reset();
 		}
-		if (upOrDown == false && lift.distanceTraveled <= 0) {
-			lift.lift(0);
-			return true;
-		}
-		if (upOrDown == true && lift.heightOfArm >= lift.distanceTraveled) {
-			lift.lift(0);
-			return true;
-		}
-		if (upOrDown == true && lift.distanceTraveled >= lift.totesLocation[lift.lastPossition + 1]) {
-			lift.lastPossition++;
+		if (upOrDown == true && !lift.limitSwitchTop.get()) {
+			lift.atTop = true;
+			lift.currentLevel = 6;
 			lift.lift(0);
 			return true;
 		}
-		if (upOrDown == false && lift.distanceTraveled <= lift.totesLocation[lift.lastPossition - 1]) {
+		if (upOrDown == true) {
+			if (lift.lastPossition < 5) {
+				if (lift.thisEncoder.getDistance() >= lift.totesLocation[lift.lastPossition + 1]) {
+					lift.lastPossition++;
+					System.out.println(lift.lastPossition);
+					lift.lift(0);
+					return true;
+				}
+			}
+		}
+		if (upOrDown == false && lift.lastPossition - 1 >= 0 && lift.thisEncoder.getDistance() <= lift.totesLocation[lift.lastPossition - 1]) {
 			lift.lastPossition--;
 			lift.lift(0);
 			return true;

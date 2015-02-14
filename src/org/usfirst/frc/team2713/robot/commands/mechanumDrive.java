@@ -16,7 +16,6 @@ public class mechanumDrive extends commandBase{
 	}
 	
 	protected void execute() {
-
 		SCALER = prefs.getDouble("SCALER", 0.6);
 		DEADBAND = prefs.getDouble("DEADBAND",0.1);
 		POLARITY = -1;

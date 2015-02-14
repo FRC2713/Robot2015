@@ -32,7 +32,6 @@ public class moveGrabber extends commandBase {
 	}
 
 	protected void execute() {
-		System.out.println("Running");
 		triggerPolarity = OI.xbox.getTriggerAxis();
 		getTiggerPolarity();
 		if (inOrOut != null && inOrOut == true && grab.armClosed.get()) {

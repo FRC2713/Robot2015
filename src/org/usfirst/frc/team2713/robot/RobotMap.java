@@ -31,17 +31,17 @@ public class RobotMap {
         
     public static final int AMMOUNT_OF_CRATES_TO_GET_IN_AUTONOMOUS = 1;
     
-    public static final int DRIVE_ENCODER_B_CHANNEL = 1;
-    public static final int DRIVE_ENCODER_A_CHANNEL = 2;
+    public static final int DRIVE_ENCODER_B_CHANNEL = 3;
+    public static final int DRIVE_ENCODER_A_CHANNEL = 4;
     
-    public static final int LIFT_ENCODER_A_CHANNEL = 3;
-    public static final int LIFT_ENCODER_B_CHANNEL = 4;
+    public static final int LIFT_ENCODER_A_CHANNEL = 8;
+    public static final int LIFT_ENCODER_B_CHANNEL = 9;
     
     public static final int TIME_TO_CLOSE_OR_OPEN = 6;
     
     public static final int ARM_LIMIT_SWITCH_NUM = 5;
-    public static final int BOTTOM_LIMIT_SWITCH_LIFT = 7;
-    public static final int TOP_LIMIT_SWITCH_LIFT = 8;
+    public static final int BOTTOM_LIMIT_SWITCH_LIFT = 2;
+    public static final int TOP_LIMIT_SWITCH_LIFT = 1;
 
 
 
