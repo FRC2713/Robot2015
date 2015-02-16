@@ -1,17 +1,15 @@
 package org.usfirst.frc.team2713.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import org.usfirst.frc.team2713.robot.commands.closeOrOpenGrabber;
 
 
 public class natesAutonomousCommand extends CommandGroup {
 	
-	public natesAutonomousCommand() {
-		addSequential(new OpenCloseGrabber(-1),4);
-		addSequential(new goForward(5), 1);
-		addSequential(new OpenCloseGrabber(1), 4);
-		addSequential(new goForward(5),3.5);
-		addSequential(new OpenCloseGrabber(-1),4);
-		addSequential(new goForward(-5), 2.5);
+	public natesAutonomousCommand(){
+		addSequential(new closeOrOpenGrabber(1),4);	
+		addSequential(new goForward(1),5);
+		addSequential(new goForward(-1), 2.5);
 	}
 
 }
