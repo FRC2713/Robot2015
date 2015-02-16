@@ -1,7 +1,9 @@
 package org.usfirst.frc.team2713.robot.commands;
 
+
+import org.usfirst.frc.team2713.robot.subsystems.Passer;
+
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.templates.subsystems.Passer;
 
 /**
  *

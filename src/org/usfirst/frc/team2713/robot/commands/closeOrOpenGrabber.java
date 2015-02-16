@@ -22,7 +22,7 @@ public class closeOrOpenGrabber extends commandBase{
 	}
 	
 	protected boolean isFinished() {
-		if ((!grab.armClosed.get()) && direction < 0) {
+		if ((!grab.armClosed.get()) && !grab.armClosed2.get() && direction < 0) {
 			System.out.println("Run");
 			return true;
 		}

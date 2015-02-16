@@ -1,10 +1,10 @@
 package org.usfirst.frc.team2713.robot.subsystems;
 
 import org.usfirst.frc.team2713.robot.commands.mechanumDrive;
-
 import org.usfirst.frc.team2713.robot.RobotMap;
 import org.usfirst.frc.team2713.robot.UniversalController;
 
+import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -87,8 +87,8 @@ public class DriveSubsystem extends Subsystem {
 	}
 	
 	public void move(double speed) {
-    	rightFront.getProperController().set(speed);
-    	rightBack.getProperController().set(speed);
+    	rightFront.getProperController().set(-speed);
+    	rightBack.getProperController().set(-speed);
     	leftFront.getProperController().set(speed);
     	leftBack.getProperController().set(speed);
 	}

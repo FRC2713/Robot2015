@@ -35,11 +35,13 @@ public class RobotMap {
     public static final int TIME_TO_CLOSE_OR_OPEN = 6;
     
     public static final int DRIVE_ENCODER_B_CHANNEL = 5;
+    
     public static final int DRIVE_ENCODER_A_CHANNEL = 4;
     
     public static final int LIFT_ENCODER_A_CHANNEL = 8;
     public static final int LIFT_ENCODER_B_CHANNEL = 9;
         
+    public static final int ARM2_LIMIT_SWITCH_NUM = 6;
     public static final int ARM_LIMIT_SWITCH_NUM = 3;
     public static final int BOTTOM_LIMIT_SWITCH_LIFT = 2;
     public static final int TOP_LIMIT_SWITCH_LIFT = 1;

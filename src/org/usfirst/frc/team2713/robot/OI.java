@@ -31,6 +31,7 @@ public class OI {
 
 	public OI() {
 		xbox = new XBoxController(RobotMap.XBOX_PORT);
+		joystick = new Joystick(RobotMap.JOYSTICK_PORT);
 		if (RobotMap.INIT_LIFT) {
 			
 			liftUp = new JoystickButton(xbox, 4);

@@ -15,11 +15,15 @@ public class GrabberSubsystem extends Subsystem {
 	public UniversalController grab;
 	moveGrabber graberCommand;
 	public DigitalInput armClosed;
+	public DigitalInput armClosed2;
 
 	public GrabberSubsystem() {
 		grab = new UniversalController(RobotMap.GRAB_MOTOR);
 		if (armClosed == null) {
 			armClosed = new DigitalInput(RobotMap.ARM_LIMIT_SWITCH_NUM);
+		}
+		if (armClosed2 == null) {
+			armClosed2 = new DigitalInput(RobotMap.ARM2_LIMIT_SWITCH_NUM);
 		}
 	}
 	
