@@ -19,6 +19,7 @@ public class goForward extends commandBase{
     }
 	
 	protected void execute() {
+		System.out.println("Go Forward Running ");
 		drive.move(.7);
 	}
 

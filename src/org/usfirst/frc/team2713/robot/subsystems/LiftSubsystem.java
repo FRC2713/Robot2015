@@ -29,7 +29,7 @@ public class LiftSubsystem extends Subsystem {
 	public LiftSubsystem() {
 		System.out.println(distancePerRotation);
 		System.out.println(distancePerPulse);
-		arm = new UniversalController(RobotMap.ARM_MOTOR);
+		arm = new UniversalController(RobotMap.LIFT_MOTOR);
 		thisEncoder = new Encoder(RobotMap.LIFT_ENCODER_A_CHANNEL, RobotMap.LIFT_ENCODER_B_CHANNEL);
 		thisEncoder.setDistancePerPulse(distancePerPulse);
 		thisEncoder.reset();

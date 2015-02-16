@@ -13,6 +13,7 @@ public class changeLevel extends commandBase {
 	}
 
 	protected void execute() {
+		System.out.println("Change Level Running ");
 		if (upOrDown == null) {
 			lift.lift(0);
 		} else if (upOrDown == true && !lift.atTop) {

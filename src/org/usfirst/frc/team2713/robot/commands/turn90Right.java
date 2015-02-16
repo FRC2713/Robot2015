@@ -7,8 +7,7 @@ public class turn90Right extends commandBase{
 	}
 	
 	protected boolean isFinished() {
-		
-		return false;
+		return true;
 	}
 	
 }

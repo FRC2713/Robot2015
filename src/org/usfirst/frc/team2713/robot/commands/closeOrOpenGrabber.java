@@ -21,10 +21,11 @@ public class closeOrOpenGrabber extends commandBase{
 	}
 	
 	protected boolean isFinished() {
-		if (grab.armClosed.get() && direction > 0) {
+		if ((!grab.armClosed.get()) && direction < 0) {
+			System.out.println("Run");
 			return true;
 		}
-		if(time.get() > RobotMap.TIME_TO_CLOSE_OR_OPEN && direction < 0) {
+		if(time.get() > RobotMap.TIME_TO_CLOSE_OR_OPEN && direction > 0) {
 			grab.setLift(0);
 			return true;
 		}
