@@ -2,6 +2,7 @@ package org.usfirst.frc.team2713.robot.commands;
 
 
 import org.usfirst.frc.team2713.robot.OI;
+
 import edu.wpi.first.wpilibj.Preferences;
 
 public class mechanumDrive extends commandBase{
@@ -11,8 +12,9 @@ public class mechanumDrive extends commandBase{
 	double DEADBAND;
 	double POLARITY;
 	
-	public mechanumDrive(){
-	prefs = Preferences.getInstance();
+	public mechanumDrive() {
+		requires(drive);
+		prefs = Preferences.getInstance();
 	}
 	
 	protected void execute() {

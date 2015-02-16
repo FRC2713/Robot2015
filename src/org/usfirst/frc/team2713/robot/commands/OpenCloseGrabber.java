@@ -14,6 +14,7 @@ public class OpenCloseGrabber extends commandBase {
 
 	protected void execute() {
 		grab.setLift(polarity);
+		System.out.println("Running");
 	}
 
 	protected boolean isFinished() {

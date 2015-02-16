@@ -1,9 +1,9 @@
 package org.usfirst.frc.team2713.robot;
 
 import edu.wpi.first.wpilibj.CameraServer;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.PrintCommand;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.Preferences;
@@ -12,13 +12,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import com.ni.vision.NIVision;
 import com.ni.vision.NIVision.Image;
 
-import org.usfirst.frc.team2713.robot.commands.ExampleCommand;
 import org.usfirst.frc.team2713.robot.commands.commandBase;
 import org.usfirst.frc.team2713.robot.commands.natesAutonomousCommand;
 import org.usfirst.frc.team2713.robot.subsystems.ExampleSubsystem;
-
-import edu.wpi.first.wpilibj.CameraServer;
-import edu.wpi.first.wpilibj.Timer;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to each mode, as described in the IterativeRobot documentation. If you change the name of this class or
@@ -69,17 +65,6 @@ public class Robot extends IterativeRobot {
 		if (autonomousCommand != null) {
 			autonomousCommand.start();
 		}
-			if (RobotMap.INIT_DRIVE) {
-				base.initDrive();
-			}
-
-			if (RobotMap.INIT_LIFT) {
-				base.initLift();
-			}
-
-			if (RobotMap.INIT_GRAB) {
-				base.initGrab();
-			}
 	}
 
 	/**
@@ -97,18 +82,8 @@ public class Robot extends IterativeRobot {
 		if (autonomousCommand != null) {
 			autonomousCommand.cancel();
 		}
-			if (RobotMap.INIT_DRIVE) {
-				base.initDrive();
-			}
-
-			if (RobotMap.INIT_LIFT) {
-				base.initLift();
-			}
-
-			if (RobotMap.INIT_GRAB) {
-				base.initGrab();
-			}
-
+		commandBase.drive.startCommand();
+		commandBase.grab.startCommand();
 	}
 
 	/**

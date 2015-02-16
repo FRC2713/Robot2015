@@ -7,29 +7,27 @@ import org.usfirst.frc.team2713.robot.subsystems.LiftSubsystem;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class commandBase extends Command {
-	public static DriveSubsystem drive;
-	public static LiftSubsystem lift;
-	public static GrabberSubsystem grab;
+	public static DriveSubsystem drive = new DriveSubsystem();;
+	public static LiftSubsystem lift = new LiftSubsystem();;
+	public static GrabberSubsystem grab = new GrabberSubsystem();;
 	public boolean isCreated;
 
 	public void initLift() {
 		if (lift == null) {
-			lift = new LiftSubsystem();
+			//lift = new LiftSubsystem();
 		}
 	}
 
 	public void initDrive() {
 		if (drive == null) {
-			drive = new DriveSubsystem();
+			//drive = new DriveSubsystem();
 		}
-		drive.initMechanumDrive();
 	}
 
 	public void initGrab() {
 		if (grab == null) {
-			grab = new GrabberSubsystem();
+			//grab = new GrabberSubsystem();
 		}
-		grab.intiCommand();
 	}
 
 	protected void initialize() {

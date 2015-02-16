@@ -7,6 +7,10 @@ public class moveGrabber extends commandBase {
 	Boolean inOrOut;
 	double triggerPolarity = OI.xbox.getTriggerAxis();
 
+	public moveGrabber() {
+		requires(grab);
+	}
+	
 	public void getTiggerPolarity() {
 		if (OI.xbox.getTriggerAxis() != 0 && OI.xbox.getZ() != 0) {
 			inOrOut = null;
@@ -22,11 +26,7 @@ public class moveGrabber extends commandBase {
 			inOrOut = null;
 		}
 	}
-
-	public moveGrabber() {
-
-	}
-
+	
 	protected void initialize() {
 
 	}
@@ -34,7 +34,7 @@ public class moveGrabber extends commandBase {
 	protected void execute() {
 		triggerPolarity = OI.xbox.getTriggerAxis();
 		getTiggerPolarity();
-		if (inOrOut != null && inOrOut == true && !grab.armClosed.get()) {
+		if (inOrOut != null && inOrOut == true && grab.armClosed.get()) {
 			grab.setLift(1);
 		} else if (inOrOut != null && inOrOut == false) {
 			grab.setLift(-1);

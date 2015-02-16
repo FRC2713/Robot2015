@@ -13,15 +13,19 @@ public class changeLevel extends commandBase {
 	}
 
 	protected void execute() {
-		System.out.println("Change Level Running ");
-		if (upOrDown == null) {
-			lift.lift(0);
-		} else if (upOrDown == true && !lift.atTop) {
-			lift.atBottom = false;
-			lift.lift(1);
-		} else if (upOrDown == false && !lift.atBottom) {
-			lift.atTop = false;
-			lift.lift(-1);
+		if (upOrDown != null && (upOrDown || !upOrDown) && !lift.toBeReleased) {
+			if (upOrDown == null) {
+				lift.lift(0);
+			} else if (upOrDown == true && !lift.atTop) {
+				lift.atBottom = false;
+				lift.lift(1);
+			} else if (upOrDown == false && !lift.atBottom) {
+				lift.atTop = false;
+				lift.lift(-1);
+			}
+		}
+		if(upOrDown == null) {
+			lift.toBeReleased = false;
 		}
 	}
 
@@ -35,6 +39,7 @@ public class changeLevel extends commandBase {
 			lift.atBottom = true;
 			lift.currentLevel = 0;
 			lift.thisEncoder.reset();
+			lift.toBeReleased = true;
 			return true;
 		}
 		if (lift.atBottom == true && upOrDown == false && lift.thisEncoder.getDistance() <= 0) {
@@ -42,19 +47,22 @@ public class changeLevel extends commandBase {
 			lift.atBottom = true;
 			lift.currentLevel = 0;
 			lift.thisEncoder.reset();
+			lift.toBeReleased = true;
+			return true;
 		}
 		if (upOrDown == true && !lift.limitSwitchTop.get()) {
 			lift.atTop = true;
 			lift.currentLevel = 6;
 			lift.lift(0);
+			lift.toBeReleased = true;
 			return true;
 		}
 		if (upOrDown == true) {
 			if (lift.lastPossition < 5) {
 				if (lift.thisEncoder.getDistance() >= lift.totesLocation[lift.lastPossition + 1]) {
 					lift.lastPossition++;
-					System.out.println(lift.lastPossition);
 					lift.lift(0);
+					lift.toBeReleased = true;
 					return true;
 				}
 			}
@@ -62,6 +70,7 @@ public class changeLevel extends commandBase {
 		if (upOrDown == false && lift.lastPossition - 1 >= 0 && lift.thisEncoder.getDistance() <= lift.totesLocation[lift.lastPossition - 1]) {
 			lift.lastPossition--;
 			lift.lift(0);
+			lift.toBeReleased = true;
 			return true;
 		}
 		return false;

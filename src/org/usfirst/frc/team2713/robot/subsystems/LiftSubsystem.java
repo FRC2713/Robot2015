@@ -15,9 +15,8 @@ public class LiftSubsystem extends Subsystem {
 	public Encoder thisEncoder;
 	public int lastPossition = 0;
 	public double heightOfArm = 72.8;
-	public double gearRatio = .04166;
 	public double pulses = 48;
-	public double distancePerRotation = 11.0 * gearRatio;
+	public double distancePerRotation = 11.0;
 	public double distancePerPulse = distancePerRotation/pulses;
 	public final double[] totesLocation;
 	public final double toteHeight = 12.1;
@@ -25,13 +24,14 @@ public class LiftSubsystem extends Subsystem {
 	public DigitalInput limitSwitchTop;
 	public boolean atBottom = false;
 	public boolean atTop = false;
+	public boolean toBeReleased = false;
 
 	public LiftSubsystem() {
 		System.out.println(distancePerRotation);
 		System.out.println(distancePerPulse);
 		arm = new UniversalController(RobotMap.LIFT_MOTOR);
 		thisEncoder = new Encoder(RobotMap.LIFT_ENCODER_A_CHANNEL, RobotMap.LIFT_ENCODER_B_CHANNEL);
-		thisEncoder.setDistancePerPulse(distancePerPulse);
+		thisEncoder.setDistancePerPulse(distancePerPulse * -10);
 		thisEncoder.reset();
 		totesLocation = new double[6];
 		limitSwitchBottom = new DigitalInput(RobotMap.BOTTOM_LIMIT_SWITCH_LIFT);

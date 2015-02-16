@@ -18,20 +18,17 @@ public class GrabberSubsystem extends Subsystem {
 
 	public GrabberSubsystem() {
 		grab = new UniversalController(RobotMap.GRAB_MOTOR);
-		if (graberCommand == null) {
-			graberCommand = new moveGrabber();
-		}
 		if (armClosed == null) {
 			armClosed = new DigitalInput(RobotMap.ARM_LIMIT_SWITCH_NUM);
 		}
 	}
 	
-	public void intiCommand() {
-		graberCommand.start();
+	public void startCommand() {
+		new moveGrabber().start();
 	}
 
 	protected void initDefaultCommand() {
-
+		
 	}
 
 	public void setLift(double polarity) {

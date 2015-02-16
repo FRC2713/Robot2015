@@ -20,12 +20,7 @@ public class DriveSubsystem extends Subsystem {
     UniversalController leftFront;
     UniversalController rightBack;
     UniversalController rightFront;
-    mechanumDrive driveCommand;
     public Encoder thisEncoder;
-    
-    public void initMechanumDrive() {
-        mechanumDrive();
-    }
     
     public DriveSubsystem(){
     	leftBack = new UniversalController(RobotMap.LEFT_DRIVE_MOTOR_BACK);
@@ -38,15 +33,13 @@ public class DriveSubsystem extends Subsystem {
     	roboDrive.setInvertedMotor(MotorType.kFrontRight, false);
     	roboDrive.setInvertedMotor(MotorType.kRearRight, false);
         roboDrive.setExpiration(0.1);
+        roboDrive.setSafetyEnabled(true);
         thisEncoder = new Encoder(RobotMap.DRIVE_ENCODER_A_CHANNEL, RobotMap.DRIVE_ENCODER_B_CHANNEL);
-        thisEncoder.setDistancePerPulse(18.4);
-         
+        thisEncoder.setDistancePerPulse(18.4);   
     }
     
-    public void mechanumDrive() {
-        roboDrive.setSafetyEnabled(true);
-    	driveCommand = new mechanumDrive();
-    	driveCommand.start();
+    public void startCommand() {
+    	new mechanumDrive().start();
     }
     
     public void TankDrive(double left, double right){ //left value, right value 
@@ -90,7 +83,6 @@ public class DriveSubsystem extends Subsystem {
 
 	@Override
 	protected void initDefaultCommand() {
-		// TODO Auto-generated method stub
 		
 	}
 	
