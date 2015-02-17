@@ -41,7 +41,7 @@ public class OI {
 			liftDown.whileHeld(new changeLevel(false));
 			liftDown.whenReleased(new changeLevel(null));
 			
-			liftUp2 = new JoystickButton(joystick, 6);
+			liftUp2 = new JoystickButton(joystick, 8);
 			liftUp2.whileHeld(new changeLevel(true));
 			liftUp2.whenReleased(new changeLevel(null));
 			liftDown2 = new JoystickButton(joystick, 7);

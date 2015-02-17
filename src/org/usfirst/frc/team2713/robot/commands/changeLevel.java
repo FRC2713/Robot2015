@@ -3,6 +3,8 @@ package org.usfirst.frc.team2713.robot.commands;
 public class changeLevel extends commandBase {
 
 	Boolean upOrDown; // True is up, False is down
+	double lastVoltage = 0;
+	double endVoltage = 1;
 
 	public changeLevel(Boolean upOrDown1) {
 		upOrDown = upOrDown1;
@@ -13,6 +15,7 @@ public class changeLevel extends commandBase {
 	}
 
 	protected void execute() {
+		lastVoltage = (lastVoltage + endVoltage)/2;
 		if (upOrDown != null && (upOrDown || !upOrDown) && !lift.toBeReleased) {
 			if (upOrDown == null) {
 				lift.lift(0);
@@ -27,6 +30,7 @@ public class changeLevel extends commandBase {
 		if(upOrDown == null) {
 			lift.toBeReleased = false;
 		}
+		System.out.println(upOrDown);
 	}
 
 	protected boolean isFinished() { // Make it so you can go down if you don't touch the bottom level
@@ -60,6 +64,7 @@ public class changeLevel extends commandBase {
 		if (upOrDown == true) {
 			if (lift.lastPossition < 5) {
 				if (lift.thisEncoder.getDistance() >= lift.totesLocation[lift.lastPossition + 1]) {
+					System.out.println("Done Up");
 					lift.lastPossition++;
 					lift.lift(0);
 					lift.toBeReleased = true;

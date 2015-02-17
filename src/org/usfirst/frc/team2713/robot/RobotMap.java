@@ -26,7 +26,7 @@ public class RobotMap {
     public static final int XBOX_PORT = 1;
     public static final int JOYSTICK_PORT = 2;
         
-    public static final boolean INIT_DRIVE = true;
+    public static final boolean INIT_DRIVE = false;
     public static final boolean INIT_LIFT = true;
     public static final boolean INIT_GRAB = true;
         
