@@ -32,6 +32,7 @@ public class OI {
 	public OI() {
 		joystick = new Joystick(RobotMap.JOYSTICK_PORT);
 		xbox = new XBoxController(RobotMap.XBOX_PORT);
+		joystick = new Joystick(RobotMap.JOYSTICK_PORT);
 		if (RobotMap.INIT_LIFT) {
 			
 			liftUp = new JoystickButton(xbox, 4);
@@ -41,7 +42,7 @@ public class OI {
 			liftDown.whileHeld(new changeLevel(false));
 			liftDown.whenReleased(new changeLevel(null));
 			
-			liftUp2 = new JoystickButton(joystick, 6);
+			liftUp2 = new JoystickButton(joystick, 8);
 			liftUp2.whileHeld(new changeLevel(true));
 			liftUp2.whenReleased(new changeLevel(null));
 			liftDown2 = new JoystickButton(joystick, 7);

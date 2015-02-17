@@ -5,11 +5,12 @@ import edu.wpi.first.wpilibj.Timer;
 public class goForward extends commandBase{
 	
 	double distance;
+	double speed;
 	Timer time;
 	
-	public goForward(double distance1) {
+	public goForward(double speed1) {
 		time = new Timer();
-		distance = distance1;
+		speed = speed1;
 		//drive.thisEncoder.reset();
 	}
 	
@@ -20,7 +21,7 @@ public class goForward extends commandBase{
 	
 	protected void execute() {
 		System.out.println("Go Forward Running ");
-		drive.move(.7);
+		drive.move(speed);
 	}
 
 	protected boolean isFinished() {
