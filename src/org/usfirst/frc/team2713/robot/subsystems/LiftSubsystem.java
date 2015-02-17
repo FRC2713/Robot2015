@@ -1,12 +1,11 @@
 package org.usfirst.frc.team2713.robot.subsystems;
 
 import org.usfirst.frc.team2713.robot.RobotMap;
-
 import org.usfirst.frc.team2713.robot.UniversalController;
-
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
 public class LiftSubsystem extends Subsystem {
 

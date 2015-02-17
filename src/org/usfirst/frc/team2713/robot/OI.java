@@ -30,6 +30,7 @@ public class OI {
 	
 
 	public OI() {
+		joystick = new Joystick(RobotMap.JOYSTICK_PORT);
 		xbox = new XBoxController(RobotMap.XBOX_PORT);
 		if (RobotMap.INIT_LIFT) {
 			
