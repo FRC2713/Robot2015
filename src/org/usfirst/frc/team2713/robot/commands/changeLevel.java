@@ -1,5 +1,7 @@
 package org.usfirst.frc.team2713.robot.commands;
 
+import org.usfirst.frc.team2713.robot.Robot;
+
 public class changeLevel extends commandBase {
 
 	Boolean upOrDown; // True is up, False is down
@@ -16,7 +18,7 @@ public class changeLevel extends commandBase {
 
 	protected void execute() {
 		lastVoltage = (lastVoltage + endVoltage) / 2;
-		if (upOrDown != null && (upOrDown || !upOrDown) && !lift.toBeReleased) {
+		if (upOrDown != null && (upOrDown || !upOrDown) && (!lift.toBeReleased || Robot.ignoreReleased)) {
 			if (upOrDown == null) {
 
 			} else if (upOrDown == true && !lift.atTop) {

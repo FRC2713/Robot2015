@@ -24,6 +24,7 @@ public class Robot extends IterativeRobot {
 
 	public static commandBase base = new commandBase();
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
+	public static boolean ignoreReleased = false;
 	public static OI oi;
 	Preferences prefs;
 	CameraServer server;
@@ -65,6 +66,7 @@ public class Robot extends IterativeRobot {
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null) {
 			autonomousCommand.start();
+			ignoreReleased = true;
 		}
 	}
 
@@ -82,6 +84,7 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null) {
 			autonomousCommand.cancel();
+			ignoreReleased = false;
 		}
 		commandBase.drive.startCommand();
 		commandBase.grab.startCommand();
