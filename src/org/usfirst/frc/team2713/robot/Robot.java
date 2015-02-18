@@ -50,6 +50,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		
 		prefs = Preferences.getInstance();
+		prefs.putInt("DriverStationNumber", 2);
 		prefs.putDouble("SCALER", 0.6);
 		prefs.putDouble("DEADBAND", 0.1);
 		SmartDashboard.putData(Scheduler.getInstance());
