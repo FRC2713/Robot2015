@@ -85,6 +85,13 @@ public class DriveSubsystem extends Subsystem {
 	protected void initDefaultCommand() {
 
 	}
+	
+	public void rotate(double speed) {
+		rightFront.getProperController().set(speed);
+		rightBack.getProperController().set(speed);
+		leftFront.getProperController().set(speed);
+		leftBack.getProperController().set(speed);
+	}
 
 	public void move(double speed) {
 		rightFront.getProperController().set(-speed);
