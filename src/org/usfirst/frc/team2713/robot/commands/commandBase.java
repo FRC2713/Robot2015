@@ -1,15 +1,16 @@
 package org.usfirst.frc.team2713.robot.commands;
 
 import org.usfirst.frc.team2713.robot.subsystems.DriveSubsystem;
+
 import org.usfirst.frc.team2713.robot.subsystems.GrabberSubsystem;
 import org.usfirst.frc.team2713.robot.subsystems.LiftSubsystem;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 public class commandBase extends Command {
-	public static DriveSubsystem drive = new DriveSubsystem();;
-	public static LiftSubsystem lift = new LiftSubsystem();;
-	public static GrabberSubsystem grab = new GrabberSubsystem();;
+	public static DriveSubsystem drive = new DriveSubsystem();
+	public static LiftSubsystem lift = new LiftSubsystem();
+	public static GrabberSubsystem grab = new GrabberSubsystem();
 	public boolean isCreated;
 
 	public void initLift() {

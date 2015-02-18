@@ -16,7 +16,7 @@ public class LiftSubsystem extends Subsystem {
 	public int lastPossition = 0;
 	public double heightOfArm = 72.8;
 	public double pulses = 48;
-	public double distancePerRotation = 11.0;
+	public double distancePerRotation = 11.0*2;
 	public double distancePerPulse = distancePerRotation / pulses;
 	public final double[] totesLocation;
 	public final double toteHeight = 12.1;
@@ -25,16 +25,16 @@ public class LiftSubsystem extends Subsystem {
 	public boolean atBottom = false;
 	public boolean atTop = false;
 	public boolean toBeReleased = false;
+	public boolean pidStarted = false;
+	public boolean stopPID = false;
 
 	public LiftSubsystem() {
+		totesLocation = new double[6];
 		if (RobotMap.INIT_LIFT) {
-			System.out.println(distancePerRotation);
-			System.out.println(distancePerPulse);
 			arm = new UniversalController(RobotMap.LIFT_MOTOR);
 			thisEncoder = new Encoder(RobotMap.LIFT_ENCODER_A_CHANNEL, RobotMap.LIFT_ENCODER_B_CHANNEL);
 			thisEncoder.setDistancePerPulse(distancePerPulse * -1);
 			thisEncoder.reset();
-			totesLocation = new double[6];
 			limitSwitchBottom = new DigitalInput(RobotMap.BOTTOM_LIMIT_SWITCH_LIFT);
 			limitSwitchTop = new DigitalInput(RobotMap.TOP_LIMIT_SWITCH_LIFT);
 			for (int i = 0; i < 6; i++) {
@@ -43,8 +43,8 @@ public class LiftSubsystem extends Subsystem {
 		}
 	}
 
-	public void lift(int polarity) {
-		arm.getProperController().set(polarity);
+	public void lift(double lastVoltage) {
+		arm.getProperController().set(lastVoltage);
 	}
 
 	public void initDefaultCommand() {

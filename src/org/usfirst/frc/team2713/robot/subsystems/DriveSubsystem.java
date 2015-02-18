@@ -32,7 +32,7 @@ public class DriveSubsystem extends Subsystem {
 			roboDrive.setInvertedMotor(MotorType.kFrontRight, false);
 			roboDrive.setInvertedMotor(MotorType.kRearRight, false);
 			roboDrive.setExpiration(0.1);
-			roboDrive.setSafetyEnabled(true);
+			roboDrive.setSafetyEnabled(false);
 			thisEncoder = new Encoder(RobotMap.DRIVE_ENCODER_A_CHANNEL, RobotMap.DRIVE_ENCODER_B_CHANNEL);
 			thisEncoder.setDistancePerPulse(18.4);
 		}

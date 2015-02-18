@@ -35,9 +35,9 @@ public class moveGrabber extends commandBase {
 		triggerPolarity = OI.xbox.getTriggerAxis();
 		getTiggerPolarity();
 		if (inOrOut != null && inOrOut == true && grab.armClosed.get()) {
-			grab.setLift(1);
+			grab.setLift(.33);
 		} else if (inOrOut != null && inOrOut == false) {
-			grab.setLift(-1);
+			grab.setLift(-.33);
 		} else {
 			grab.setLift(0);
 		}

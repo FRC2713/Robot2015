@@ -18,7 +18,7 @@ public class ryansAutonomousCommand extends CommandGroup {
 				for (int x = 0; x < cratesGrabbed; x++) {
 					addSequential(new changeLevel(true));
 				}
-				addSequential(new goForward(4.8333));
+				addSequential(new goForward(5.9));
 				addSequential(new closeOrOpenGrabber(1));
 				for(int x = 0; x < cratesGrabbed; x++) {
 					addSequential(new changeLevel(false));	
@@ -29,7 +29,7 @@ public class ryansAutonomousCommand extends CommandGroup {
 			}
 		}
 		addSequential(new turn90Right());
-		addSequential(new goForward(5.91666));
+		addSequential(new goForward(7.2));
 		addSequential(new closeOrOpenGrabber(1));
 	}
 }
