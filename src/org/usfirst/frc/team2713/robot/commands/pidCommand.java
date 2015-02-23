@@ -16,16 +16,20 @@ public class pidCommand extends commandBase {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		System.out.println(lift.stopPID);
-		System.out.println(startingPoint);
-		System.out.println(lift.thisEncoder.getDistance());
 		if (!lift.stopPID) {
 			if (lift.thisEncoder.getDistance() < startingPoint) {
-				lift.lift(.07);
-				System.out.println("Adjusting Up");
+				if(lift.thisEncoder.getDistance() - startingPoint > -.7) {
+					lift.lift(.07);
+				} else {
+					lift.lift(lift.thisEncoder.getDistance() - startingPoint * -.1);
+				}
 			}
 			if (lift.thisEncoder.getDistance() > startingPoint) {
-				lift.lift(-.02);
+				if(lift.thisEncoder.getDistance() - startingPoint < .7) {
+					lift.lift(-.02);
+				} else {
+					lift.lift(lift.thisEncoder.getDistance() - startingPoint * -.02857);
+				}
 				System.out.println("Adjusting Down");
 			}
 		}
