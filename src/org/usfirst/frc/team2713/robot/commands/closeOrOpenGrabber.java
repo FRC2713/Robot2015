@@ -7,10 +7,10 @@ import edu.wpi.first.wpilibj.Timer;
 
 public class closeOrOpenGrabber extends commandBase{
 
-	int direction;
+	double direction;
 	Timer time;
 	
-	public closeOrOpenGrabber(int direction1) { //-1 is close, 1 is open
+	public closeOrOpenGrabber(double direction1) { //-1 is close, 1 is open
 		time = new Timer();
 		time.reset();
 		time.start();
