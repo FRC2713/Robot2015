@@ -23,7 +23,7 @@ public class ryansAutonomousCommand extends CommandGroup {
 				//for(int x = 0; x < cratesGrabbed; x++) {
 					addSequential(new changeLevel(false));	
 				//}
-				addSequential(new closeOrOpenGrabber(-.25));
+				//addSequential(new closeOrOpenGrabber(-.25));
 			} else {
 				break;
 			}
