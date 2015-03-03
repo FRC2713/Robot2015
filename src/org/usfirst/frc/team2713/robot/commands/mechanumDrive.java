@@ -30,7 +30,7 @@ public class mechanumDrive extends commandBase{
 		drive.roboDrive.setSafetyEnabled(false);
 		switch (driverStationNum) {
 		case 1:
-           drive.CartesianDrive(OI.joystick.getX()*POLARITY, -OI.joystick.getY()*POLARITY, OI.joystick.getTwist()*POLARITY, .2);
+           drive.CartesianDrive(OI.joystick.getX()*POLARITY, -OI.joystick.getY()*POLARITY, -OI.joystick.getTwist()*POLARITY, .2);
             
             break; //Positive on both controllers
         case 2:

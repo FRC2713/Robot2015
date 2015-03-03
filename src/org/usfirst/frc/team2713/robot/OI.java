@@ -6,6 +6,7 @@ import org.usfirst.frc.team2713.robot.inputs.XBoxController;
 import org.usfirst.frc.team2713.robot.commands.changeLevel;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import org.usfirst.frc.team2713.robot.commands.closeOrOpenGrabber;
 
 /**
  * This class is the glue that binds the controls on the physical operator interface to the commands and command groups that allow control of the robot.
@@ -22,7 +23,10 @@ public class OI {
 	public static XBoxController xbox;
 	private JoystickButton liftUp;
 	private JoystickButton liftDown;
-	
+	private JoystickButton liftUp2;		
+	private JoystickButton liftDown2;		
+	private JoystickButton grabOpen;		
+	private JoystickButton grabClose;
 	
 
 	public OI() {
@@ -38,19 +42,19 @@ public class OI {
 			liftDown.whileHeld(new changeLevel(false));
 			liftDown.whenReleased(new changeLevel(null));
 			
-			//liftUp2 = new JoystickButton(joystick, 8);
-			//liftUp2.whileHeld(new changeLevel(true));
-			//liftUp2.whenReleased(new changeLevel(null));
-			//liftDown2 = new JoystickButton(joystick, 7);
-			//liftDown2.whileHeld(new changeLevel(false));
-			//liftDown2.whenReleased(new changeLevel(null));
+			liftUp2 = new JoystickButton(joystick, 8);
+			liftUp2.whileHeld(new changeLevel(true));
+			liftUp2.whenReleased(new changeLevel(null));
+			liftDown2 = new JoystickButton(joystick, 7);
+			liftDown2.whileHeld(new changeLevel(false));
+			liftDown2.whenReleased(new changeLevel(null));
 			
-			//grabOpen = new JoystickButton(joystick,1);
-			//grabOpen.whileHeld(new closeOrOpenGrabber(1));
-			//grabOpen.whenReleased(new closeOrOpenGrabber(0));
-			//grabClose = new JoystickButton(joystick,2);
-			//grabClose.whileHeld(new closeOrOpenGrabber(-1));
-			//grabClose.whenReleased(new closeOrOpenGrabber(0));
+			grabOpen = new JoystickButton(joystick,1);
+			grabOpen.whileHeld(new closeOrOpenGrabber(1));
+			grabOpen.whenReleased(new closeOrOpenGrabber(0));
+			grabClose = new JoystickButton(joystick,2);
+			grabClose.whileHeld(new closeOrOpenGrabber(-1));
+			grabClose.whenReleased(new closeOrOpenGrabber(0));
 			
 			
 			
