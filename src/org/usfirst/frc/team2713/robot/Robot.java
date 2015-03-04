@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2713.robot;
 
 import edu.wpi.first.wpilibj.CameraServer;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -12,7 +13,6 @@ import com.ni.vision.NIVision;
 import com.ni.vision.NIVision.Image;
 
 import org.usfirst.frc.team2713.robot.commands.commandBase;
-import org.usfirst.frc.team2713.robot.commands.natesAutonomousCommand;
 import org.usfirst.frc.team2713.robot.commands.ryansAutonomousCommand;
 import org.usfirst.frc.team2713.robot.subsystems.ExampleSubsystem;
 
@@ -51,11 +51,10 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		
 		prefs = Preferences.getInstance();
-		prefs.putInt("DriverStationNumber", 2);
-		prefs.putDouble("SCALER", 0.6);
+		prefs.putInt("DriverStationNumber", RobotMap.XBOX_OR_JOYSTICK);
+		prefs.putDouble("SCALER", 0.65); 
 		prefs.putDouble("DEADBAND", 0.1);
 		SmartDashboard.putData(Scheduler.getInstance());
-
 	}
 
 	public void disabledPeriodic() {
@@ -103,7 +102,6 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		NIVision.IMAQdxStartAcquisition(session);
 		NIVision.IMAQdxGrab(session, frame, 1);
-		NIVision.Rect rect = new NIVision.Rect(10, 10, 100, 100);
 		CameraServer.getInstance().setImage(frame);
 		Scheduler.getInstance().run();
 	}

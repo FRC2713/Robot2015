@@ -28,8 +28,9 @@ public class goForward extends commandBase {
 	}
 
 	protected void execute() {
+		System.out.println("Go Forward");
 		if ((timer.get() < time)) {
-			drive.move(polarity);
+			drive.move(-polarity);
 		} else {
 			drive.move(0);
 		}

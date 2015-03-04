@@ -26,7 +26,7 @@ public class closeOrOpenGrabber extends commandBase{
 			System.out.println("Run");
 			return true;
 		}
-		if(time.get() > RobotMap.TIME_TO_CLOSE_OR_OPEN && direction > 0) {
+		if(time.get() > RobotMap.TIME_TO_CLOSE_OR_OPEN) {
 			grab.setLift(0);
 			return true;
 		}
