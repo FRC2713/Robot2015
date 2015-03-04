@@ -8,6 +8,10 @@ import org.usfirst.frc.team2713.robot.commands.changeLevel;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import org.usfirst.frc.team2713.robot.commands.closeOrOpenGrabber;
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'TestBranch' of https://github.com/iraiders/Robot2015
 /**
  * This class is the glue that binds the controls on the physical operator interface to the commands and command groups that allow control of the robot.
  */
@@ -23,12 +27,10 @@ public class OI {
 	public static XBoxController xbox;
 	private JoystickButton liftUp;
 	private JoystickButton liftDown;
-	private JoystickButton liftUp2;
-	private JoystickButton liftDown2;
-	private JoystickButton grabOpen;
-	private JoystickButton grabClose;
-	
-	
+	private JoystickButton liftUp2;		
+	private JoystickButton liftDown2;		
+	private JoystickButton grabOpen;		
+	private JoystickButton grabClose;	
 
 	public OI() {
 		joystick = new Joystick(RobotMap.JOYSTICK_PORT);
