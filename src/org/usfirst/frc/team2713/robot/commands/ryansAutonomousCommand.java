@@ -11,19 +11,19 @@ public class ryansAutonomousCommand extends CommandGroup {
 	public ryansAutonomousCommand() {
 		int cratesGrabbed = 0;
 		for (int i = 0; i < RobotMap.AMMOUNT_OF_CRATES_TO_GET_IN_AUTONOMOUS; i++) {
-			addSequential(new closeOrOpenGrabber(-.25));
+			//addSequential(new closeOrOpenGrabber(-.25));
 			cratesGrabbed++;
 			if (cratesGrabbed < RobotMap.AMMOUNT_OF_CRATES_TO_GET_IN_AUTONOMOUS) {
-				addSequential(new changeLevel(true));
+				//addSequential(new changeLevel(true));
 				addSequential(new goForward(5.9));
-				addSequential(new closeOrOpenGrabber(.25));
-				addSequential(new changeLevel(false));	
+				//addSequential(new closeOrOpenGrabber(.25));
+				//addSequential(new changeLevel(false));	
 			} else {
 				break;
 			}
 		}
 		addSequential(new turn90Right());
 		addSequential(new goForward(7.2));
-		addSequential(new closeOrOpenGrabber(.25));
+		//addSequential(new closeOrOpenGrabber(.25));
 	}
 }
