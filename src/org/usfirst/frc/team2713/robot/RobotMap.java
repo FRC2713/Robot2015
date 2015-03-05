@@ -25,7 +25,7 @@ public class RobotMap {
 //    public static final int LIFT_MOTOR = 6;
 //    public static final int GRAB_MOTOR = 7;
 	
-	//Text Motor Layout
+	//Test Motor Layout
     public static final int LEFT_DRIVE_MOTOR_FRONT = 6;
     public static final int LEFT_DRIVE_MOTOR_BACK = 9;    
     public static final int RIGHT_DRIVE_MOTOR_FRONT = 4;
