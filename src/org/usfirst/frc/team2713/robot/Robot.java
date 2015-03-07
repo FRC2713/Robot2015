@@ -1,7 +1,6 @@
 package org.usfirst.frc.team2713.robot;
 
 import edu.wpi.first.wpilibj.CameraServer;
-
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -13,6 +12,7 @@ import com.ni.vision.NIVision;
 import com.ni.vision.NIVision.Image;
 
 import org.usfirst.frc.team2713.robot.commands.commandBase;
+import org.usfirst.frc.team2713.robot.commands.natesAutonomousCommand;
 import org.usfirst.frc.team2713.robot.commands.ryansAutonomousCommand;
 import org.usfirst.frc.team2713.robot.subsystems.ExampleSubsystem;
 
@@ -26,6 +26,7 @@ public class Robot extends IterativeRobot {
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static boolean ignoreReleased = false;
 	public static OI oi;
+	
 	Preferences prefs;
 	CameraServer server;
 	int session;
@@ -42,7 +43,7 @@ public class Robot extends IterativeRobot {
 		System.out.println("*Awsome-sauce code produced by RyNaJaSa  inc.      *");
 		System.out.println("*WARNING: might not possibly work             *");
 		System.out.println("-----------------TEST-ROBOT--------------------");
-		autonomousCommand = new ryansAutonomousCommand();
+		autonomousCommand = new natesAutonomousCommand();
 
 		frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
 		session = NIVision.IMAQdxOpenCamera("cam0", NIVision.IMAQdxCameraControlMode.CameraControlModeController);
@@ -52,7 +53,7 @@ public class Robot extends IterativeRobot {
 		
 		prefs = Preferences.getInstance();
 		prefs.putInt("DriverStationNumber", RobotMap.XBOX_OR_JOYSTICK);
-		prefs.putDouble("SCALER", 0.65); 
+		prefs.putDouble("SCALER", 0.75); 
 		prefs.putDouble("DEADBAND", 0.1);
 		SmartDashboard.putData(Scheduler.getInstance());
 	}
@@ -83,7 +84,7 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null) {
 			autonomousCommand.cancel();
-			ignoreReleased = false;
+			ignoreReleased = true;
 		}
 		commandBase.drive.startCommand();
 		commandBase.grab.startCommand();

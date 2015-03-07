@@ -13,6 +13,7 @@ public class UniversalController {
 	public UniversalController(int portNum) {
 		try {
 			thisJaguar = new CANJaguar(portNum);
+			System.out.println(portNum);
 			CANOrTalon = true;
 		} catch(AllocationException ex) {
 			//thisTalon = new Talon(portNum);

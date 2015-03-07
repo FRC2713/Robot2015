@@ -27,9 +27,9 @@ public class DriveSubsystem extends Subsystem {
 			rightBack = new UniversalController(RobotMap.RIGHT_DRIVE_MOTOR_BACK);
 			rightFront = new UniversalController(RobotMap.RIGHT_DRIVE_MOTOR_FRONT);
 			roboDrive = new RobotDrive(rightFront.getProperController(), rightBack.getProperController(), leftFront.getProperController(), leftBack.getProperController());
-			roboDrive.setInvertedMotor(MotorType.kFrontLeft, false); // invert the left side motors
+			roboDrive.setInvertedMotor(MotorType.kFrontLeft, true); // invert the left side motors
 			roboDrive.setInvertedMotor(MotorType.kRearLeft, false); // you may need to change or remove this to match your robot
-			roboDrive.setInvertedMotor(MotorType.kFrontRight, true);
+			roboDrive.setInvertedMotor(MotorType.kFrontRight, false);
 			roboDrive.setInvertedMotor(MotorType.kRearRight, true);
 			roboDrive.setExpiration(0.1);
 			roboDrive.setSafetyEnabled(false);
@@ -94,9 +94,9 @@ public class DriveSubsystem extends Subsystem {
 	}
 
 	public void move(double speed) {
-		rightFront.getProperController().set(-speed);
+		rightFront.getProperController().set(speed);
 		rightBack.getProperController().set(-speed);
-		leftFront.getProperController().set(speed);
+		leftFront.getProperController().set(-speed);
 		leftBack.getProperController().set(speed);
 	}
 

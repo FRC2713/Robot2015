@@ -18,19 +18,12 @@ public class pidCommand extends commandBase {
 	protected void execute() {
 		if (!lift.stopPID) {
 			if (lift.thisEncoder.getDistance() < startingPoint) {
-				if(lift.thisEncoder.getDistance() - startingPoint > -.7) {
-					lift.lift(.07);
-				} else {
-					lift.lift(lift.thisEncoder.getDistance() - startingPoint * -.1);
-				}
+				lift.lift(.07);
+				//System.out.println("Adjusting Up");
 			}
 			if (lift.thisEncoder.getDistance() > startingPoint) {
-				if(lift.thisEncoder.getDistance() - startingPoint < .7) {
-					lift.lift(-.02);
-				} else {
-					lift.lift(lift.thisEncoder.getDistance() - startingPoint * -.02857);
-				}
-				System.out.println("Adjusting Down");
+				lift.lift(-.02);
+				//System.out.println("Adjusting Down");
 			}
 		}
 	}

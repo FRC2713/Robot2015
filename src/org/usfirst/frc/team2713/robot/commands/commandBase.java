@@ -13,6 +13,11 @@ public class commandBase extends Command {
 	public static GrabberSubsystem grab = new GrabberSubsystem();
 	public boolean isCreated;
 
+	public commandBase() {
+		
+	}
+	
+	
 	public void initLift() {
 		if (lift == null) {
 			//lift = new LiftSubsystem();

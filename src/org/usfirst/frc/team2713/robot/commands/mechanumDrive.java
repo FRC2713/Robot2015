@@ -28,13 +28,13 @@ public class mechanumDrive extends commandBase {
 		drive.roboDrive.setSafetyEnabled(false);
 		switch (driverStationNum) {
 		case 1:
-			drive.CartesianDrive(OI.joystick.getX() * POLARITY * Math.abs(OI.joystick.getX() * POLARITY), -(OI.joystick.getY() * POLARITY * Math.abs(OI.joystick.getY() * POLARITY)),
+			drive.CartesianDrive(-(OI.joystick.getX() * POLARITY * Math.abs(OI.joystick.getX()) * POLARITY), (OI.joystick.getY() * POLARITY * Math.abs(OI.joystick.getY() * POLARITY)),
 					-(OI.joystick.getTwist() * POLARITY * Math.abs(OI.joystick.getTwist() * POLARITY)), DEADBAND);
 
 			break; // Positive on both controllers
 		case 2:
-			drive.CartesianDrive(OI.xbox.getX() * SCALER * POLARITY * Math.abs(OI.xbox.getX() * SCALER * POLARITY), OI.xbox.getY() * SCALER * Math.abs(OI.xbox.getY() * SCALER), OI.xbox.getRightX()
-					* SCALER * POLARITY * Math.abs(OI.xbox.getRightX() * SCALER * POLARITY), DEADBAND);
+			drive.CartesianDrive((OI.xbox.getRightX() * SCALER * POLARITY * Math.abs(OI.xbox.getRightX() * SCALER * POLARITY)), (OI.xbox.getLeftY() * SCALER * Math.abs(OI.xbox.getLeftY() * SCALER)),
+					-(OI.xbox.getLeftX() * SCALER * Math.abs(OI.xbox.getLeftX() * SCALER)), DEADBAND);
 
 			break; // positive on both controllers
 

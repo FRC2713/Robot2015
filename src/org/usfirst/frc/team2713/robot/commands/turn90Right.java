@@ -13,7 +13,6 @@ public class turn90Right extends commandBase {
 	}
 
 	protected void execute() {
-		System.out.println("Rotating");
 		drive.rotate(.7);
 	}
 	
@@ -23,7 +22,7 @@ public class turn90Right extends commandBase {
 	}
 
 	protected boolean isFinished() {
-		if(time.get() > .4) {
+		if(time.get() > .65) {
 			drive.move(0);
 			return true;
 		}

@@ -18,13 +18,13 @@ public class changeLevel extends commandBase {
 
 	protected void execute() {
 		lastVoltage = (lastVoltage + endVoltage) / 2;
-		if (upOrDown != null && (upOrDown || !upOrDown) && (!lift.toBeReleased || Robot.ignoreReleased)) {
+		if (upOrDown != null && (upOrDown || !upOrDown) && ((!lift.toBeReleased) || Robot.ignoreReleased)) {
 			if (upOrDown == null) {
 
 			} else if (upOrDown == true && !lift.atTop) {
 				lift.stopPID = true;
 				lift.atBottom = false;
-				lift.lift(lastVoltage);
+				lift.lift(lastVoltage * 1.6);
 			} else if (upOrDown == false && !lift.atBottom) {
 				lift.stopPID = true;
 				lift.atTop = false;
@@ -41,6 +41,7 @@ public class changeLevel extends commandBase {
 	}
 
 	protected boolean isFinished() { // Make it so you can go down if you don't touch the bottom level
+		System.out.println(lift.thisEncoder.getDistance());
 		if (upOrDown == null) {
 			lift.lift(0);
 			if (!lift.pidStarted) {
@@ -80,6 +81,7 @@ public class changeLevel extends commandBase {
 					lift.lastPossition++;
 					lift.lift(0);
 					lift.toBeReleased = true;
+					System.out.println("Top struck");
 					if (!lift.pidStarted) {
 						new pidCommand(lift.thisEncoder.getDistance()).start();
 					}

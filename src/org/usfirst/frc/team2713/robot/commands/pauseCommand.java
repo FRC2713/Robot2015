@@ -20,7 +20,7 @@ public class pauseCommand extends commandBase{
 	}
 	
 	protected void execute() {
-		System.out.println("Pausing for "+ time);
+
 	}
 	
 	protected boolean isFinished() {
