@@ -12,7 +12,7 @@ import com.ni.vision.NIVision;
 import com.ni.vision.NIVision.Image;
 
 import org.usfirst.frc.team2713.robot.commands.commandBase;
-import org.usfirst.frc.team2713.robot.commands.natesAutonomousCommand;
+import org.usfirst.frc.team2713.robot.commands.theAutonomousCommand;
 import org.usfirst.frc.team2713.robot.commands.ryansAutonomousCommand;
 import org.usfirst.frc.team2713.robot.subsystems.ExampleSubsystem;
 
@@ -43,7 +43,7 @@ public class Robot extends IterativeRobot {
 		System.out.println("*Awsome-sauce code produced by RyNaJaSa  inc.      *");
 		System.out.println("*WARNING: might not possibly work             *");
 		System.out.println("-----------------TEST-ROBOT--------------------");
-		autonomousCommand = new natesAutonomousCommand();
+		autonomousCommand = new theAutonomousCommand();
 
 		frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
 		session = NIVision.IMAQdxOpenCamera("cam0", NIVision.IMAQdxCameraControlMode.CameraControlModeController);
