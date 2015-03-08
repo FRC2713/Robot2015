@@ -34,7 +34,7 @@ public class LiftSubsystem extends Subsystem {
 			thisEncoder = new Encoder(RobotMap.LIFT_ENCODER_A_CHANNEL, RobotMap.LIFT_ENCODER_B_CHANNEL);
 			thisEncoder.setDistancePerPulse(distancePerPulse * -1);
 			thisEncoder.setReverseDirection(true);
-			thisEncoder.reset();
+			thisEncoder.reset();	
 			limitSwitchBottom = new DigitalInput(RobotMap.BOTTOM_LIMIT_SWITCH_LIFT);
 			limitSwitchTop = new DigitalInput(RobotMap.TOP_LIMIT_SWITCH_LIFT);
 			for (int i = 0; i < 6; i++) {

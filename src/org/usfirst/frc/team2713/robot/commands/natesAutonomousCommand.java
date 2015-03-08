@@ -10,12 +10,10 @@ public class natesAutonomousCommand extends CommandGroup {
 		addSequential(new closeOrOpenGrabber(-1));
 		addSequential(new turn90Right());
 		//addSequential(new changeLevel(true));
-		addSequential(new goForward(9.0));
-		addSequential(new closeOrOpenGrabber(1));
-		addSequential(new closeOrOpenGrabber(1));
-		addSequential(new goForward(-5));
-		//addSequential(new closeOrOpenGrabber(1));	
-		//addSequential(new goForward(-1));
+		addSequential(new goForward(10.0));
+		addSequential(new closeOrOpenGrabber(1));	
+		addSequential(new closeOrOpenGrabber(1));	
+		//addSequential(new goForward(-3));
 	}
 
 }

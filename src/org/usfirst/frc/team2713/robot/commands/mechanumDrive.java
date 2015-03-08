@@ -23,7 +23,7 @@ public class mechanumDrive extends commandBase {
 	protected void execute() {
 		driverStationNum = prefs.getInt("DriverStationNumber", 2);
 		SCALER = prefs.getDouble("SCALER", 0.6);
-		DEADBAND = prefs.getDouble("DEADBAND", 0.1);
+		DEADBAND = prefs.getDouble("DEADBAND", 0.05);
 		POLARITY = -1;
 		drive.roboDrive.setSafetyEnabled(false);
 		switch (driverStationNum) {

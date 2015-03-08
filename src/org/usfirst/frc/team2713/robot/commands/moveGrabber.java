@@ -40,9 +40,9 @@ public class moveGrabber extends commandBase {
 		//System.out.println(!grab.armClosed.get() + " Limit");
 		//System.out.println(inOrOut + " In or Out");
 		if (inOrOut != null && inOrOut == true) {
-			grab.setLift(.33);
+			grab.setLift(.45);
 		} else if (inOrOut != null && inOrOut == false) {
-			grab.setLift(-.33);
+			grab.setLift(-.45);
 		} else {
 			grab.setLift(0);
 		}

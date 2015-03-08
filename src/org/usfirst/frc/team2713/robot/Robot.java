@@ -54,7 +54,7 @@ public class Robot extends IterativeRobot {
 		prefs = Preferences.getInstance();
 		prefs.putInt("DriverStationNumber", RobotMap.XBOX_OR_JOYSTICK);
 		prefs.putDouble("SCALER", 0.75); 
-		prefs.putDouble("DEADBAND", 0.1);
+		prefs.putDouble("DEADBAND", 0.05);
 		SmartDashboard.putData(Scheduler.getInstance());
 	}
 
