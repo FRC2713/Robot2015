@@ -1,7 +1,7 @@
 package org.usfirst.frc.team2713.robot;
 
 import edu.wpi.first.wpilibj.CANJaguar;
-import edu.wpi.first.wpilibj.SensorBase;
+
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.util.AllocationException;
@@ -13,6 +13,7 @@ public class UniversalController {
 	public UniversalController(int portNum) {
 		try {
 			thisJaguar = new CANJaguar(portNum);
+			System.out.println(portNum);
 			CANOrTalon = true;
 		} catch(AllocationException ex) {
 			//thisTalon = new Talon(portNum);
