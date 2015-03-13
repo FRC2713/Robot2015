@@ -4,6 +4,8 @@ import org.usfirst.frc.team2713.robot.Robot;
 
 public class changeLevel extends commandBase {
 
+	// Phil - an enum or some other way of naming up and down would be better than having to 
+	// remember up is true.  Also, you might want a 3-way up, down, not-moving.
 	Boolean upOrDown; // True is up, False is down
 	double lastVoltage = 0;
 	double endVoltage = .25;
@@ -18,8 +20,12 @@ public class changeLevel extends commandBase {
 
 	protected void execute() {
 		lastVoltage = (lastVoltage + endVoltage) / 2;
+		
 		if (upOrDown != null && (upOrDown || !upOrDown) && ((!lift.toBeReleased) || Robot.ignoreReleased)) {
-			if (upOrDown == null) {
+			// Phil - this is *UGLY*.  If upOrDown is not null, (upOrDown || !upOrDown) is true
+			// so why put it in?  
+			if (upOrDown == null) { // This can't happen since one of the conditions above 
+				// is upOrDown != null
 
 			} else if (upOrDown == true && !lift.atTop) {
 				lift.stopPID = true;

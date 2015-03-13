@@ -25,11 +25,11 @@ public class XBoxController extends Joystick {
     }
 
     public double getRightX() {
-        return getRawAxis(4);
+        return getRawAxis(4); // Phil - are these magic numbers?
     }
 
     public double getRightY() {
-        return getRawAxis(5);
+        return getRawAxis(5); 
     }
     
     public double getTriggerAxis() {

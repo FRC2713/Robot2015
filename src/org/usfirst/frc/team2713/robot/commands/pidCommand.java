@@ -1,5 +1,7 @@
 package org.usfirst.frc.team2713.robot.commands;
 
+// Phil - why is this called pidCommand?  pid usually refers to
+// Proportional Integral Derivative, a type of control system
 public class pidCommand extends commandBase {
 
 	double startingPoint;

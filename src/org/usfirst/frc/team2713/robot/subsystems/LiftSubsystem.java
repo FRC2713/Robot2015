@@ -15,7 +15,9 @@ public class LiftSubsystem extends Subsystem {
 	public int lastPossition = 0;
 	public double heightOfArm = 72.8;
 	public double pulses = 48;
-	public double distancePerRotation = 11.0*2;
+	public double distancePerRotation = 11.0*2; //Phil - circumference?  of what?
+	// Phil - does this take gearing into account?  If so, it would be better to say
+	// something like distancePerMotorRotation = pi * spoolDiam / gearRatio 
 	public double distancePerPulse = distancePerRotation / pulses;
 	public final double[] totesLocation;
 	public final double toteHeight = 12.1;
@@ -38,7 +40,7 @@ public class LiftSubsystem extends Subsystem {
 			limitSwitchBottom = new DigitalInput(RobotMap.BOTTOM_LIMIT_SWITCH_LIFT);
 			limitSwitchTop = new DigitalInput(RobotMap.TOP_LIMIT_SWITCH_LIFT);
 			for (int i = 0; i < 6; i++) {
-				totesLocation[i] = toteHeight * i * 2;
+				totesLocation[i] = toteHeight * i * 2; // Phil - why * 2?
 			}
 		}
 	}
