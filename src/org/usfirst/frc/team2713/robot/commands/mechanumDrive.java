@@ -14,6 +14,10 @@ public class mechanumDrive extends commandBase {
 	double SCALER;
 	double DEADBAND;
 	double POLARITY;
+	double leftXSpeed;
+	double leftYSpeed;
+	double rightXSpeed;
+
 
 	public mechanumDrive() {
 		requires(drive);
@@ -26,19 +30,10 @@ public class mechanumDrive extends commandBase {
 		DEADBAND = prefs.getDouble("DEADBAND", 0.05);
 		POLARITY = -1;
 		drive.roboDrive.setSafetyEnabled(false);
-		switch (driverStationNum) {
-		case 1:
-			drive.CartesianDrive(-(OI.joystick.getX() * POLARITY * Math.abs(OI.joystick.getX()) * POLARITY), (OI.joystick.getY() * POLARITY * Math.abs(OI.joystick.getY() * POLARITY)),
-					-(OI.joystick.getTwist() * POLARITY * Math.abs(OI.joystick.getTwist() * POLARITY)), DEADBAND);
-
-			break; // Positive on both controllers
-		case 2:
-			drive.CartesianDrive((OI.xbox.getRightX() * SCALER * POLARITY * Math.abs(OI.xbox.getRightX() * SCALER * POLARITY)), (OI.xbox.getLeftY() * SCALER * Math.abs(OI.xbox.getLeftY() * SCALER)),
-					-(OI.xbox.getLeftX() * SCALER * Math.abs(OI.xbox.getLeftX() * SCALER)), DEADBAND);
-
-			break; // positive on both controllers
-
-		}
+		leftXSpeed = -OI.xbox.getRightX();
+		leftYSpeed = (OI.xbox.getLeftY() * SCALER);
+		rightXSpeed = -OI.xbox.getLeftX();
+		drive.CartesianDrive(leftXSpeed, leftYSpeed, rightXSpeed, DEADBAND);
 
 	}
 }

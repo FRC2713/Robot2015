@@ -17,7 +17,6 @@ public class commandBase extends Command {
 		
 	}
 	
-	
 	public void initLift() {
 		if (lift == null) {
 			//lift = new LiftSubsystem();
