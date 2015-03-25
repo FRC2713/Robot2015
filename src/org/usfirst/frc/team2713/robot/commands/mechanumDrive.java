@@ -27,13 +27,12 @@ public class mechanumDrive extends commandBase {
 	protected void execute() {
 		driverStationNum = prefs.getInt("DriverStationNumber", 2);
 		SCALER = prefs.getDouble("SCALER", 0.6);
-		DEADBAND = prefs.getDouble("DEADBAND", 0.05);
+		DEADBAND = prefs.getDouble("DEADBAND", 0.10);
 		POLARITY = -1;
 		drive.roboDrive.setSafetyEnabled(false);
-		leftXSpeed = -OI.xbox.getRightX();
-		leftYSpeed = (OI.xbox.getLeftY() * SCALER);
-		rightXSpeed = -OI.xbox.getLeftX();
+		leftXSpeed = OI.xbox.getRightX() * .5;
+		leftYSpeed = -(OI.xbox.getLeftY() * .5);
+		rightXSpeed = OI.xbox.getLeftX() * .5;
 		drive.CartesianDrive(leftXSpeed, leftYSpeed, rightXSpeed, DEADBAND);
-
 	}
 }
