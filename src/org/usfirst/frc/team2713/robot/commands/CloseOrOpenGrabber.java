@@ -5,12 +5,12 @@ import org.usfirst.frc.team2713.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.Timer;
 
-public class closeOrOpenGrabber extends commandBase{
+public class CloseOrOpenGrabber extends CommandBase{
 
 	double direction;
 	Timer time;
 	
-	public closeOrOpenGrabber(double direction1) { //-1 is close, 1 is open
+	public CloseOrOpenGrabber(double direction1) { //-1 is close, 1 is open
 		time = new Timer();
 		time.reset();
 		time.start();

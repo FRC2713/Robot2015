@@ -30,7 +30,7 @@ public class LiftSubsystem extends Subsystem {
 	public LiftSubsystem() {
 		totesLocation = new double[6];
 		if (RobotMap.INIT_LIFT) {
-			arm = new UniversalController(RobotMap.LIFT_MOTOR);
+			arm = new UniversalController(RobotMap.LIFT_MOTOR, false);
 			thisEncoder = new Encoder(RobotMap.LIFT_ENCODER_A_CHANNEL, RobotMap.LIFT_ENCODER_B_CHANNEL);
 			thisEncoder.setDistancePerPulse(distancePerPulse * -1);
 			thisEncoder.setReverseDirection(true);

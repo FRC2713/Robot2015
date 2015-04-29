@@ -2,11 +2,11 @@ package org.usfirst.frc.team2713.robot.commands;
 
 import edu.wpi.first.wpilibj.Timer;
 
-public class turn90Right extends commandBase {
+public class Turn90Right extends CommandBase {
 
 	Timer time;
 
-	public turn90Right() {
+	public Turn90Right() {
 		time = new Timer();
 		time.reset();
 		time.start();

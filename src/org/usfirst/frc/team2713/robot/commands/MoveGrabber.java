@@ -2,12 +2,12 @@ package org.usfirst.frc.team2713.robot.commands;
 
 import org.usfirst.frc.team2713.robot.OI;
 
-public class moveGrabber extends commandBase {
+public class MoveGrabber extends CommandBase {
 
 	Boolean inOrOut;
 	double triggerPolarity = OI.xbox.getTriggerAxis();
 
-	public moveGrabber() {
+	public MoveGrabber() {
 		requires(grab);
 	}
 	
@@ -18,10 +18,10 @@ public class moveGrabber extends commandBase {
 			triggerPolarity = 0;
 		} else if (OI.xbox.getTriggerAxis() != 0) { //Left
 			//System.out.println("Running Axis");
+			//System.out.println("Going Out");
 			inOrOut = true;
 			triggerPolarity = OI.xbox.getTriggerAxis();
 		} else if (OI.xbox.getZ() != 0) { //Right
-			//System.out.println("Running Trigger");
 			inOrOut = false;
 			triggerPolarity = OI.xbox.getZ();
 		} else if (OI.xbox.getTriggerAxis() == 0 && OI.xbox.getZ() == 0) {

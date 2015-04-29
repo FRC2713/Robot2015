@@ -1,10 +1,10 @@
 package org.usfirst.frc.team2713.robot.commands;
 
-public class pidCommand extends commandBase {
+public class PidCommand extends CommandBase {
 
 	double startingPoint;
 
-	public pidCommand(double startingPoint) {
+	public PidCommand(double startingPoint) {
 		lift.pidStarted = true;
 		lift.stopPID = false;
 		this.startingPoint = startingPoint;
@@ -19,11 +19,9 @@ public class pidCommand extends commandBase {
 		if (!lift.stopPID) {
 			if (lift.thisEncoder.getDistance() < startingPoint) {
 				lift.lift(.07);
-				//System.out.println("Adjusting Up");
 			}
 			if (lift.thisEncoder.getDistance() > startingPoint) {
 				lift.lift(-.02);
-				//System.out.println("Adjusting Down");
 			}
 		}
 	}

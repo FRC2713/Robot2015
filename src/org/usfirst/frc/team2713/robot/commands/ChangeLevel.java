@@ -2,13 +2,13 @@ package org.usfirst.frc.team2713.robot.commands;
 
 import org.usfirst.frc.team2713.robot.Robot;
 
-public class changeLevel extends commandBase {
+public class ChangeLevel extends CommandBase {
 
 	Boolean upOrDown; // True is up, False is down
 	double lastVoltage = 0;
-	double endVoltage = .25;
+	double endVoltage = .3;
 
-	public changeLevel(Boolean upOrDown1) {
+	public ChangeLevel(Boolean upOrDown1) {
 		upOrDown = upOrDown1;
 	}
 
@@ -24,7 +24,7 @@ public class changeLevel extends commandBase {
 			} else if (upOrDown == true && !lift.atTop) {
 				lift.stopPID = true;
 				lift.atBottom = false;
-				lift.lift(lastVoltage * 1.6);
+				lift.lift(lastVoltage * 2);
 			} else if (upOrDown == false && !lift.atBottom) {
 				lift.stopPID = true;
 				lift.atTop = false;
@@ -35,17 +35,16 @@ public class changeLevel extends commandBase {
 			lift.toBeReleased = false;
 			lift.lift(0);
 			if (!lift.pidStarted) {
-				new pidCommand(lift.thisEncoder.getDistance()).start();
+				new PidCommand(lift.thisEncoder.getDistance()).start();
 			}
 		}
 	}
 
 	protected boolean isFinished() { // Make it so you can go down if you don't touch the bottom level
-		System.out.println(lift.thisEncoder.getDistance());
 		if (upOrDown == null) {
 			lift.lift(0);
 			if (!lift.pidStarted) {
-				new pidCommand(lift.thisEncoder.getDistance()).start();
+				new PidCommand(lift.thisEncoder.getDistance()).start();
 			}
 			return true; // Limit Switch to tell when you are at the bottom, and reset the counter
 		}
@@ -71,7 +70,7 @@ public class changeLevel extends commandBase {
 			lift.lift(0);
 			lift.toBeReleased = true;
 			if (!lift.pidStarted) {
-				new pidCommand(lift.thisEncoder.getDistance()).start();
+				new PidCommand(lift.thisEncoder.getDistance()).start();
 			}
 			return true;
 		}
@@ -81,9 +80,8 @@ public class changeLevel extends commandBase {
 					lift.lastPossition++;
 					lift.lift(0);
 					lift.toBeReleased = true;
-					System.out.println("Top struck");
 					if (!lift.pidStarted) {
-						new pidCommand(lift.thisEncoder.getDistance()).start();
+						new PidCommand(lift.thisEncoder.getDistance()).start();
 					}
 					return true;
 				}
@@ -94,7 +92,7 @@ public class changeLevel extends commandBase {
 			lift.lift(0);
 			lift.toBeReleased = true;
 			if (!lift.pidStarted) {
-				new pidCommand(lift.thisEncoder.getDistance()).start();
+				new PidCommand(lift.thisEncoder.getDistance()).start();
 			}
 			return true;
 		}

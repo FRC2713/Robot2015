@@ -57,5 +57,12 @@ public class RobotMap {
     
     public static final int XBOX_OR_JOYSTICK = 2; //Two means Xbox, One means joystick
 
+    public static double drive_Scaler = .7; 
+    public static double drive_Normal_Scaler = .7; 
+    public static double drive_Slow_Scaler = .30; 
+    
+    public static double drive_Slow_Down= .7; 
+    public static double drive_Normal_Slow_Down = .7; 
+    public static double drive_Slow_Slow_Down = .2; 
 
 }
