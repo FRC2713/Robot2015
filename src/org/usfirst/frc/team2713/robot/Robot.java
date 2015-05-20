@@ -10,8 +10,9 @@ import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team2713.robot.commands.CommandBase;
-import org.usfirst.frc.team2713.robot.commands.AutonomousTurnRight;
-import org.usfirst.frc.team2713.robot.commands.ExampleCommand;
+import org.usfirst.frc.team2713.robot.commands.autonomousCommands.AutonomousGoForward;
+import org.usfirst.frc.team2713.robot.commands.autonomousCommands.AutonomousTurnRight;
+import org.usfirst.frc.team2713.robot.commands.autonomousCommands.ExampleCommand;
 import org.usfirst.frc.team2713.robot.subsystems.ExampleSubsystem;
 
 /**
@@ -48,9 +49,11 @@ public class Robot extends IterativeRobot {
 		if(autonomousSwitches[0].get() == true) {
 			autonomousCommand = new ExampleCommand();
 		} else if(autonomousSwitches[1].get() == true) {
-			//autonomousCommand = new AutonomousTurnRight();			
+			autonomousCommand = new AutonomousTurnRight();			
+		} else if(autonomousSwitches[1].get() == true) {
+			autonomousCommand = new AutonomousGoForward();			
 		} else {
-			//autonomousCommand = new ExampleCommand();
+			autonomousCommand = new ExampleCommand();
 		}
 		oi = new OI();
 		

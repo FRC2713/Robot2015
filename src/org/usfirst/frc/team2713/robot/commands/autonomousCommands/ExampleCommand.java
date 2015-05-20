@@ -1,5 +1,5 @@
 
-package org.usfirst.frc.team2713.robot.commands;
+package org.usfirst.frc.team2713.robot.commands.autonomousCommands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
