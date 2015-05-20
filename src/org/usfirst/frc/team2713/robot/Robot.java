@@ -1,8 +1,7 @@
 package org.usfirst.frc.team2713.robot;
 
 import edu.wpi.first.wpilibj.CameraServer;
-
-
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -11,7 +10,8 @@ import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team2713.robot.commands.CommandBase;
-import org.usfirst.frc.team2713.robot.commands.TheAutonomousCommand;
+import org.usfirst.frc.team2713.robot.commands.AutonomousTurnRight;
+import org.usfirst.frc.team2713.robot.commands.ExampleCommand;
 import org.usfirst.frc.team2713.robot.subsystems.ExampleSubsystem;
 
 /**
@@ -22,6 +22,7 @@ public class Robot extends IterativeRobot {
 
 	public static CommandBase base = new CommandBase();
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
+	public static DigitalInput[] autonomousSwitches;
 	public static boolean ignoreReleased = false;
 	public static OI oi;
 	
@@ -40,8 +41,17 @@ public class Robot extends IterativeRobot {
 		System.out.println("*Awsome-sauce code produced by RyNaJaSa  inc.      *");
 		System.out.println("*WARNING: might not possibly work             *");
 		System.out.println("-----------------TEST-ROBOT--------------------");
-		autonomousCommand = new TheAutonomousCommand();
-
+		autonomousSwitches = new DigitalInput[RobotMap.DIPSWITCHCOUNT];
+		for(int i = 0; i < RobotMap.DIPSWITCHCOUNT; i++) {
+			autonomousSwitches[i] = new DigitalInput(i + RobotMap.DIPSWITCHSTARTPORT);
+		}
+		if(autonomousSwitches[0].get() == true) {
+			autonomousCommand = new ExampleCommand();
+		} else if(autonomousSwitches[1].get() == true) {
+			//autonomousCommand = new AutonomousTurnRight();			
+		} else {
+			//autonomousCommand = new ExampleCommand();
+		}
 		oi = new OI();
 		
 		prefs = Preferences.getInstance();

@@ -21,6 +21,11 @@ public class ExampleCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	for(int i = 0; i < Robot.autonomousSwitches.length; i++) {
+    		if(Robot.autonomousSwitches[i].get() == true) {
+    			System.out.println(i);
+    		}
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

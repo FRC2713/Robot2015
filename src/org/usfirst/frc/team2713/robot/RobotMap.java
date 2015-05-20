@@ -64,5 +64,8 @@ public class RobotMap {
     public static double drive_Slow_Down= .7; 
     public static double drive_Normal_Slow_Down = .7; 
     public static double drive_Slow_Slow_Down = .2; 
+    
+    public static final int DIPSWITCHCOUNT = 4;
+    public static final int DIPSWITCHSTARTPORT = 10;   
 
 }
