@@ -50,7 +50,7 @@ public class Robot extends IterativeRobot {
 			autonomousCommand = new ExampleCommand();
 		} else if(autonomousSwitches[1].get() == true) {
 			autonomousCommand = new AutonomousTurnRight();			
-		} else if(autonomousSwitches[1].get() == true) {
+		} else if(autonomousSwitches[2].get() == true) {
 			autonomousCommand = new AutonomousGoForward();			
 		} else {
 			autonomousCommand = new ExampleCommand();

@@ -3,6 +3,7 @@ package org.usfirst.frc.team2713.robot.commands;
 public class PidCommand extends CommandBase {
 
 	double startingPoint;
+	double encoder;
 
 	public PidCommand(double startingPoint) {
 		lift.pidStarted = true;
@@ -10,12 +11,14 @@ public class PidCommand extends CommandBase {
 		this.startingPoint = startingPoint;
 	}
 
-	protected void initialize() {
-
+	protected void initialize(){	
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
+		encoder = lift.thisEncoder.getDistance();
+		System.out.println(encoder);
+			
 		if (!lift.stopPID) {
 			if (lift.thisEncoder.getDistance() < startingPoint) {
 				lift.lift(.07);
@@ -46,5 +49,6 @@ public class PidCommand extends CommandBase {
 	protected void interrupted() {
 		lift.pidStarted = false;
 	}
+	
 
 }

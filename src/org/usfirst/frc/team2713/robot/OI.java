@@ -43,8 +43,8 @@ public class OI {
 		
 		changeDriveSpeed = new JoystickButton(xbox, 3);
 		changeDriveSpeed.whenPressed(new ChangeDriveSpeed());
-		changeDriveSpeed = new JoystickButton(xbox, 2);
-		changeDriveSpeed.whenPressed(new MakeDriveCoast());
+		changeDriveCoast = new JoystickButton(xbox, 2);
+		changeDriveCoast.whenPressed(new MakeDriveCoast());
 	}
 
 	public XBoxController getXbox() {
