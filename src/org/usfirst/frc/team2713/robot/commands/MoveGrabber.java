@@ -2,30 +2,26 @@ package org.usfirst.frc.team2713.robot.commands;
 
 import org.usfirst.frc.team2713.robot.OI;
 
-public class moveGrabber extends commandBase {
+public class MoveGrabber extends CommandBase {
 
 	Boolean inOrOut;
 	double triggerPolarity = OI.xbox.getTriggerAxis();
 
-	public moveGrabber() {
+	public MoveGrabber() {
 		requires(grab);
 	}
 	
 	public void getTiggerPolarity() {
 		if (OI.xbox.getTriggerAxis() != 0 && OI.xbox.getZ() != 0) {
-			//System.out.println("Both Hit");
 			inOrOut = null;
 			triggerPolarity = 0;
-		} else if (OI.xbox.getTriggerAxis() != 0) { //Left
-			//System.out.println("Running Axis");
+		} else if (OI.xbox.getZ() != 0) { //Left
 			inOrOut = true;
 			triggerPolarity = OI.xbox.getTriggerAxis();
-		} else if (OI.xbox.getZ() != 0) { //Right
-			//System.out.println("Running Trigger");
+		} else if (OI.xbox.getTriggerAxis() != 0) { //Right
 			inOrOut = false;
 			triggerPolarity = OI.xbox.getZ();
 		} else if (OI.xbox.getTriggerAxis() == 0 && OI.xbox.getZ() == 0) {
-			//System.out.println("None Hit");
 			triggerPolarity = 0;
 			inOrOut = null;
 		}

@@ -2,12 +2,12 @@ package org.usfirst.frc.team2713.robot.commands;
 
 import edu.wpi.first.wpilibj.Timer;
 
-public class pauseCommand extends commandBase{
+public class PauseCommand extends CommandBase{
 
 	double time;
 	Timer timer;
 	
-	public pauseCommand(double Time){
+	public PauseCommand(double Time){
 		timer = new Timer();
 		time = Time;
 		timer.reset();

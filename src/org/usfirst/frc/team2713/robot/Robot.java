@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2713.robot;
 
 import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -8,12 +9,10 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import com.ni.vision.NIVision;
-import com.ni.vision.NIVision.Image;
-
-import org.usfirst.frc.team2713.robot.commands.commandBase;
-import org.usfirst.frc.team2713.robot.commands.theAutonomousCommand;
-import org.usfirst.frc.team2713.robot.commands.ryansAutonomousCommand;
+import org.usfirst.frc.team2713.robot.commands.CommandBase;
+import org.usfirst.frc.team2713.robot.commands.autonomousCommands.AutonomousGoForward;
+import org.usfirst.frc.team2713.robot.commands.autonomousCommands.AutonomousTurnRight;
+import org.usfirst.frc.team2713.robot.commands.autonomousCommands.ExampleCommand;
 import org.usfirst.frc.team2713.robot.subsystems.ExampleSubsystem;
 
 /**
@@ -22,15 +21,15 @@ import org.usfirst.frc.team2713.robot.subsystems.ExampleSubsystem;
  */
 public class Robot extends IterativeRobot {
 
-	public static commandBase base = new commandBase();
+	public static CommandBase base = new CommandBase();
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
+	public static DigitalInput[] autonomousSwitches;
 	public static boolean ignoreReleased = false;
 	public static OI oi;
 	
 	Preferences prefs;
 	CameraServer server;
 	int session;
-	Image frame;
 
 	Command autonomousCommand;
 
@@ -43,18 +42,28 @@ public class Robot extends IterativeRobot {
 		System.out.println("*Awsome-sauce code produced by RyNaJaSa  inc.      *");
 		System.out.println("*WARNING: might not possibly work             *");
 		System.out.println("-----------------TEST-ROBOT--------------------");
-		autonomousCommand = new theAutonomousCommand();
-
-		frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
-		session = NIVision.IMAQdxOpenCamera("cam0", NIVision.IMAQdxCameraControlMode.CameraControlModeController);
-		NIVision.IMAQdxConfigureGrab(session);
-
+		autonomousSwitches = new DigitalInput[RobotMap.DIPSWITCHCOUNT];
+		for(int i = 0; i < RobotMap.DIPSWITCHCOUNT; i++) {
+			autonomousSwitches[i] = new DigitalInput(i + RobotMap.DIPSWITCHSTARTPORT);
+		}
+		if(autonomousSwitches[0].get() == true) {
+			autonomousCommand = new ExampleCommand();
+		} else if(autonomousSwitches[1].get() == true) {
+			autonomousCommand = new AutonomousTurnRight();			
+		} else if(autonomousSwitches[2].get() == true) {
+			autonomousCommand = new AutonomousGoForward();			
+		} else {
+			autonomousCommand = new ExampleCommand();
+		}
 		oi = new OI();
 		
 		prefs = Preferences.getInstance();
 		prefs.putInt("DriverStationNumber", RobotMap.XBOX_OR_JOYSTICK);
 		prefs.putDouble("SCALER", 0.75); 
 		prefs.putDouble("DEADBAND", 0.05);
+        server = CameraServer.getInstance();
+        server.setQuality(50);
+        server.startAutomaticCapture("cam0");
 		SmartDashboard.putData(Scheduler.getInstance());
 	}
 
@@ -86,8 +95,8 @@ public class Robot extends IterativeRobot {
 			autonomousCommand.cancel();
 			ignoreReleased = true;
 		}
-		commandBase.drive.startCommand();
-		commandBase.grab.startCommand();
+		CommandBase.drive.startCommand();
+		CommandBase.grab.startCommand();
 	}
 
 	/**
@@ -101,9 +110,9 @@ public class Robot extends IterativeRobot {
 	 * This function is called periodically during operator control
 	 */
 	public void teleopPeriodic() {
-		NIVision.IMAQdxStartAcquisition(session);
-		NIVision.IMAQdxGrab(session, frame, 1);
-		CameraServer.getInstance().setImage(frame);
+		//NIVision.IMAQdxStartAcquisition(session);
+		//NIVision.IMAQdxGrab(session, frame, 1);
+		//CameraServer.getInstance().setImage(frame);
 		Scheduler.getInstance().run();
 	}
 

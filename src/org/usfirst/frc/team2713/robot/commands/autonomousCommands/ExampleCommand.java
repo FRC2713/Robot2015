@@ -1,5 +1,5 @@
 
-package org.usfirst.frc.team2713.robot.commands;
+package org.usfirst.frc.team2713.robot.commands.autonomousCommands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -21,6 +21,7 @@ public class ExampleCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -2,14 +2,14 @@ package org.usfirst.frc.team2713.robot.commands;
 
 import edu.wpi.first.wpilibj.Timer;
 
-public class goForward extends commandBase {
+public class GoForward extends CommandBase {
 
 	double distance; // 8' at 70%
 	double time;
 	Timer timer;
 	double polarity = 0.7;
 
-	public goForward(double distance1) {
+	public GoForward(double distance1) {
 		timer = new Timer();
 		distance = distance1;
 		time = distance / 8;
