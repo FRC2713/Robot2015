@@ -2,7 +2,9 @@ package org.usfirst.frc.team2713.robot.commands;
 
 import org.usfirst.frc.team2713.robot.RobotMap;
 
-public class ChangeDriveSpeed extends CommandBase {
+import edu.wpi.first.wpilibj.command.Command;
+
+public class ChangeDriveSpeed extends Command {
 
 	int timesRun = 0;
 

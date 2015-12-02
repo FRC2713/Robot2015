@@ -1,7 +1,9 @@
 package org.usfirst.frc.team2713.robot.subsystems;
 
 import org.usfirst.frc.team2713.robot.RobotMap;
+import org.usfirst.frc.team2713.robot.SubsystemStorage;
 import org.usfirst.frc.team2713.robot.UniversalController;
+
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -26,8 +28,10 @@ public class LiftSubsystem extends Subsystem {
 	public boolean toBeReleased = false;
 	public boolean pidStarted = false;
 	public boolean stopPID = false;
+	SubsystemStorage base;
 
-	public LiftSubsystem() {
+	public LiftSubsystem(SubsystemStorage base) {
+		this.base = base;
 		totesLocation = new double[6];
 		if (RobotMap.INIT_LIFT) {
 			arm = new UniversalController(RobotMap.LIFT_MOTOR, false);

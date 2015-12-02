@@ -2,6 +2,7 @@ package org.usfirst.frc.team2713.robot.subsystems;
 
 import org.usfirst.frc.team2713.robot.commands.MechanumDrive;
 import org.usfirst.frc.team2713.robot.RobotMap;
+import org.usfirst.frc.team2713.robot.SubsystemStorage;
 import org.usfirst.frc.team2713.robot.UniversalController;
 
 import edu.wpi.first.wpilibj.CANJaguar;
@@ -19,8 +20,10 @@ public class DriveSubsystem extends Subsystem {
 	UniversalController rightBack;
 	UniversalController rightFront;
 	public Encoder thisEncoder;
+	SubsystemStorage base;
 
-	public DriveSubsystem() {
+	public DriveSubsystem(SubsystemStorage base) {
+		this.base = base;
 		if (RobotMap.INIT_DRIVE) {
 			leftBack = new UniversalController(RobotMap.LEFT_DRIVE_MOTOR_BACK, false);
 			leftFront = new UniversalController(RobotMap.LEFT_DRIVE_MOTOR_FRONT, true);
@@ -40,7 +43,7 @@ public class DriveSubsystem extends Subsystem {
 
 	public void startCommand() {
 		if (RobotMap.INIT_DRIVE) {
-			 new MechanumDrive().start();
+			 new MechanumDrive(base).start();
 		}
 	}
 

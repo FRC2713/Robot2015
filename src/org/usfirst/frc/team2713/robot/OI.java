@@ -28,16 +28,16 @@ public class OI {
 	private JoystickButton changeDriveSpeed;
 	private JoystickButton changeDriveCoast;
 
-	public OI() {
+	public OI(SubsystemStorage base) {
 		xbox = new XBoxController(RobotMap.XBOX_PORT);
 		if (RobotMap.INIT_LIFT) {
 			
 			liftUp = new JoystickButton(xbox, 4);
-			liftUp.whileHeld(new ChangeLevel(true));
-			liftUp.whenReleased(new ChangeLevel(null));
+			liftUp.whileHeld(new ChangeLevel(true, base));
+			liftUp.whenReleased(new ChangeLevel(null, base));
 			liftDown = new JoystickButton(xbox, 1);
-			liftDown.whileHeld(new ChangeLevel(false));
-			liftDown.whenReleased(new ChangeLevel(null));
+			liftDown.whileHeld(new ChangeLevel(false, base));
+			liftDown.whenReleased(new ChangeLevel(null, base));
 			
 		}
 		

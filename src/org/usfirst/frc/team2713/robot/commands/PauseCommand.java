@@ -1,8 +1,9 @@
 package org.usfirst.frc.team2713.robot.commands;
 
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.command.Command;
 
-public class PauseCommand extends CommandBase{
+public class PauseCommand extends Command {
 
 	double time;
 	Timer timer;
@@ -29,6 +30,18 @@ public class PauseCommand extends CommandBase{
 		}
 		return false;
 
+	}
+
+	@Override
+	protected void end() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void interrupted() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

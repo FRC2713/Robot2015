@@ -1,13 +1,19 @@
 package org.usfirst.frc.team2713.robot.commands;
 
-public class PidCommand extends CommandBase {
+import org.usfirst.frc.team2713.robot.SubsystemStorage;
+
+import edu.wpi.first.wpilibj.command.Command;
+
+public class PidCommand extends Command {
 
 	double startingPoint;
 	double encoder;
+	SubsystemStorage base;
 
-	public PidCommand(double startingPoint) {
-		lift.pidStarted = true;
-		lift.stopPID = false;
+	public PidCommand(double startingPoint, SubsystemStorage base) {
+		this.base = base;
+		this.base.lift.pidStarted = true;
+		this.base.lift.stopPID = false;
 		this.startingPoint = startingPoint;
 	}
 
@@ -16,24 +22,24 @@ public class PidCommand extends CommandBase {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		encoder = lift.thisEncoder.getDistance();
+		encoder = base.lift.thisEncoder.getDistance();
 		System.out.println(encoder);
 			
-		if (!lift.stopPID) {
-			if (lift.thisEncoder.getDistance() < startingPoint) {
-				lift.lift(.07);
+		if (!base.lift.stopPID) {
+			if (base.lift.thisEncoder.getDistance() < startingPoint) {
+				base.lift.lift(.07);
 			}
-			if (lift.thisEncoder.getDistance() > startingPoint) {
-				lift.lift(-.02);
+			if (base.lift.thisEncoder.getDistance() > startingPoint) {
+				base.lift.lift(-.02);
 			}
 		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		if (lift.stopPID) {
-			lift.lift(0);
-			lift.pidStarted = false;
+		if (base.lift.stopPID) {
+			base.lift.lift(0);
+			base.lift.pidStarted = false;
 			return true;
 		}
 		return false;
@@ -41,13 +47,13 @@ public class PidCommand extends CommandBase {
 
 	// Called once after isFinished returns true
 	protected void end() {
-		lift.pidStarted = false;
+		base.lift.pidStarted = false;
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted() {
-		lift.pidStarted = false;
+		base.lift.pidStarted = false;
 	}
 	
 

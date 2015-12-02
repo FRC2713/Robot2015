@@ -1,7 +1,7 @@
 package org.usfirst.frc.team2713.robot.subsystems;
 
 import org.usfirst.frc.team2713.robot.RobotMap;
-
+import org.usfirst.frc.team2713.robot.SubsystemStorage;
 import org.usfirst.frc.team2713.robot.UniversalController;
 import org.usfirst.frc.team2713.robot.commands.MoveGrabber;
 
@@ -16,8 +16,10 @@ public class GrabberSubsystem extends Subsystem {
 	MoveGrabber graberCommand;
 	public DigitalInput armClosed;
 	public DigitalInput armClosed2;
+	SubsystemStorage base;
 
-	public GrabberSubsystem() {
+	public GrabberSubsystem(SubsystemStorage base) {
+		this.base = base;
 		if (RobotMap.INIT_GRAB) {
 			grab = new UniversalController(RobotMap.GRAB_MOTOR, false);
 			if (armClosed == null) {
@@ -31,7 +33,7 @@ public class GrabberSubsystem extends Subsystem {
 
 	public void startCommand() {
 		if (RobotMap.INIT_GRAB) {
-			new MoveGrabber().start();
+			new MoveGrabber(base).start();
 		}
 	}
 

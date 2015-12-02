@@ -1,15 +1,20 @@
 package org.usfirst.frc.team2713.robot.commands;
 
-import edu.wpi.first.wpilibj.Timer;
+import org.usfirst.frc.team2713.robot.SubsystemStorage;
 
-public class GoForward extends CommandBase {
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.command.Command;
+
+public class GoForward extends Command {
 
 	double distance; // 8' at 70%
 	double time;
 	Timer timer;
 	double polarity = 0.7;
+	SubsystemStorage base;
 
-	public GoForward(double distance1) {
+	public GoForward(double distance1, SubsystemStorage base) {
+		this.base = base;
 		timer = new Timer();
 		distance = distance1;
 		time = distance / 8;
@@ -30,9 +35,9 @@ public class GoForward extends CommandBase {
 	protected void execute() {
 		System.out.println("Go Forward");
 		if ((timer.get() < time)) {
-			drive.move(-polarity);
+			base.drive.move(-polarity);
 		} else {
-			drive.move(0);
+			base.drive.move(0);
 		}
 	}
 
@@ -45,11 +50,23 @@ public class GoForward extends CommandBase {
 		// return false;
 		// }
 		if (timer.get() > time) {
-			drive.move(0);
+			base.drive.move(0);
 			return true;
 		}
 		return false;
 
+	}
+
+	@Override
+	protected void end() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void interrupted() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -1,16 +1,19 @@
 package org.usfirst.frc.team2713.robot.commands;
 
 import org.usfirst.frc.team2713.robot.RobotMap;
-
+import org.usfirst.frc.team2713.robot.SubsystemStorage;
 
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.command.Command;
 
-public class CloseOrOpenGrabber extends CommandBase{
+public class CloseOrOpenGrabber extends Command {
 
 	double direction;
 	Timer time;
+	SubsystemStorage base;
 	
-	public CloseOrOpenGrabber(double direction1) { //-1 is close, 1 is open
+	public CloseOrOpenGrabber(double direction1, SubsystemStorage base) { //-1 is close, 1 is open
+		this.base = base;
 		time = new Timer();
 		time.reset();
 		time.start();
@@ -23,18 +26,30 @@ public class CloseOrOpenGrabber extends CommandBase{
 	}
 	
 	protected void execute() {
-		grab.setLift(direction * .33);
+		base.grab.setLift(direction * .33);
 	}
 	
 	protected boolean isFinished() {
-		if ((!grab.armClosed.get()) && !grab.armClosed2.get() && direction < 0) {
+		if ((!base.grab.armClosed.get()) && !base.grab.armClosed2.get() && direction < 0) {
 			return true;
 		}
 		if(time.get() > RobotMap.TIME_TO_CLOSE_OR_OPEN) {
-			grab.setLift(0);
+			base.grab.setLift(0);
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	protected void end() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void interrupted() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

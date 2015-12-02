@@ -1,20 +1,25 @@
 package org.usfirst.frc.team2713.robot.commands;
 
-import edu.wpi.first.wpilibj.Timer;
+import org.usfirst.frc.team2713.robot.SubsystemStorage;
 
-public class Turn extends CommandBase {
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.command.Command;
+
+public class Turn extends Command {
 
 	Timer time;
 	double timeElapsed;
+	private SubsystemStorage base;
 
-	public Turn(boolean leftOrRight) {
+	public Turn(boolean leftOrRight, SubsystemStorage base) {
 		time = new Timer();
 		time.reset();
 		time.start();
+		this.base = base;
 	}
 
 	protected void execute() {
-		drive.rotate(.7);
+		base.drive.rotate(.7);
 	}
 	
 	protected void initialize() {
@@ -24,10 +29,22 @@ public class Turn extends CommandBase {
 
 	protected boolean isFinished() {
 		if(time.get() > .65) {
-			drive.move(0);
+			base.drive.move(0);
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	protected void end() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void interrupted() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

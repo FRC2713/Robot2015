@@ -9,7 +9,6 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team2713.robot.commands.CommandBase;
 import org.usfirst.frc.team2713.robot.commands.autonomousCommands.AutonomousGoForward;
 import org.usfirst.frc.team2713.robot.commands.autonomousCommands.AutonomousTurnRight;
 import org.usfirst.frc.team2713.robot.commands.autonomousCommands.ExampleCommand;
@@ -21,7 +20,7 @@ import org.usfirst.frc.team2713.robot.subsystems.ExampleSubsystem;
  */
 public class Robot extends IterativeRobot {
 
-	public static CommandBase base = new CommandBase();
+	public SubsystemStorage base;
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static DigitalInput[] autonomousSwitches;
 	public static boolean ignoreReleased = false;
@@ -42,6 +41,7 @@ public class Robot extends IterativeRobot {
 		System.out.println("*Awsome-sauce code produced by RyNaJaSa  inc.      *");
 		System.out.println("*WARNING: might not possibly work             *");
 		System.out.println("-----------------TEST-ROBOT--------------------");
+		base = new SubsystemStorage();
 		autonomousSwitches = new DigitalInput[RobotMap.DIPSWITCHCOUNT];
 		for(int i = 0; i < RobotMap.DIPSWITCHCOUNT; i++) {
 			autonomousSwitches[i] = new DigitalInput(i + RobotMap.DIPSWITCHSTARTPORT);
@@ -49,13 +49,13 @@ public class Robot extends IterativeRobot {
 		if(autonomousSwitches[0].get() == true) {
 			autonomousCommand = new ExampleCommand();
 		} else if(autonomousSwitches[1].get() == true) {
-			autonomousCommand = new AutonomousTurnRight();			
+			autonomousCommand = new AutonomousTurnRight(base);			
 		} else if(autonomousSwitches[2].get() == true) {
-			autonomousCommand = new AutonomousGoForward();			
+			autonomousCommand = new AutonomousGoForward(base);			
 		} else {
 			autonomousCommand = new ExampleCommand();
 		}
-		oi = new OI();
+		oi = new OI(base);
 		
 		prefs = Preferences.getInstance();
 		prefs.putInt("DriverStationNumber", RobotMap.XBOX_OR_JOYSTICK);
@@ -95,8 +95,8 @@ public class Robot extends IterativeRobot {
 			autonomousCommand.cancel();
 			ignoreReleased = true;
 		}
-		CommandBase.drive.startCommand();
-		CommandBase.grab.startCommand();
+		base.drive.startCommand();
+		base.grab.startCommand();
 	}
 
 	/**

@@ -2,10 +2,12 @@ package org.usfirst.frc.team2713.robot.commands;
 
 import org.usfirst.frc.team2713.robot.OI;
 import org.usfirst.frc.team2713.robot.RobotMap;
+import org.usfirst.frc.team2713.robot.SubsystemStorage;
 
 import edu.wpi.first.wpilibj.Preferences;
+import edu.wpi.first.wpilibj.command.Command;
 
-public class MechanumDrive extends CommandBase {
+public class MechanumDrive extends Command {
 
 	Preferences prefs;
 	int driverStationNum;
@@ -18,9 +20,11 @@ public class MechanumDrive extends CommandBase {
 	double suggestedLeftXSpeed;
 	double suggestedLeftYSpeed;
 	double suggestedRightXSpeed;
+	private SubsystemStorage base;
 
-	public MechanumDrive() {
-		requires(drive);
+	public MechanumDrive(SubsystemStorage base) {
+		this.base = base;
+		requires(this.base.drive);
 		prefs = Preferences.getInstance();
 	}
 
@@ -29,7 +33,7 @@ public class MechanumDrive extends CommandBase {
 		SCALER = prefs.getDouble("SCALER", 0.6);
 		DEADBAND = prefs.getDouble("DEADBAND", 0.10);
 		POLARITY = -1;
-		drive.roboDrive.setSafetyEnabled(false);
+		base.drive.roboDrive.setSafetyEnabled(false);
 		suggestedLeftXSpeed = OI.xbox.getRightX()  * RobotMap.drive_Scaler;
 		suggestedLeftYSpeed = -(OI.xbox.getLeftY()) * RobotMap.drive_Scaler;
 		suggestedRightXSpeed = OI.xbox.getLeftX() * RobotMap.drive_Scaler;
@@ -38,7 +42,7 @@ public class MechanumDrive extends CommandBase {
 		//leftXSpeed = approachSpeed(leftXSpeed, suggestedLeftXSpeed);
 		//leftYSpeed = approachSpeed(leftYSpeed, suggestedLeftYSpeed);
 		rightXSpeed = rightXSpeed * (1 - .5) + suggestedRightXSpeed * .5;
-		drive.CartesianDrive(leftXSpeed, leftYSpeed, rightXSpeed, DEADBAND);
+		base.drive.CartesianDrive(leftXSpeed, leftYSpeed, rightXSpeed, DEADBAND);
 	}
 	
 	public static double approachSpeed(double current, double suggested) {
@@ -47,5 +51,29 @@ public class MechanumDrive extends CommandBase {
 		} else {
 			return current = current + .01;
 		}
+	}
+
+	@Override
+	protected void initialize() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected boolean isFinished() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	protected void end() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void interrupted() {
+		// TODO Auto-generated method stub
+		
 	}
 }

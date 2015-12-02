@@ -1,14 +1,19 @@
 package org.usfirst.frc.team2713.robot.commands;
 
 import org.usfirst.frc.team2713.robot.OI;
+import org.usfirst.frc.team2713.robot.SubsystemStorage;
 
-public class MoveGrabber extends CommandBase {
+import edu.wpi.first.wpilibj.command.Command;
+
+public class MoveGrabber extends Command {
 
 	Boolean inOrOut;
 	double triggerPolarity = OI.xbox.getTriggerAxis();
+	SubsystemStorage base;
 
-	public MoveGrabber() {
-		requires(grab);
+	public MoveGrabber(SubsystemStorage base) {
+		this.base = base;
+		requires(this.base.grab);
 	}
 	
 	public void getTiggerPolarity() {
@@ -36,11 +41,11 @@ public class MoveGrabber extends CommandBase {
 		//System.out.println(!grab.armClosed.get() + " Limit");
 		//System.out.println(inOrOut + " In or Out");
 		if (inOrOut != null && inOrOut == true) {
-			grab.setLift(.45);
+			base.grab.setLift(.45);
 		} else if (inOrOut != null && inOrOut == false) {
-			grab.setLift(-.45);
+			base.grab.setLift(-.45);
 		} else {
-			grab.setLift(0);
+			base.grab.setLift(0);
 		}
 	}
 

@@ -1,15 +1,20 @@
 package org.usfirst.frc.team2713.robot.commands;
 
 import org.usfirst.frc.team2713.robot.Robot;
+import org.usfirst.frc.team2713.robot.SubsystemStorage;
 
-public class ChangeLevel extends CommandBase {
+import edu.wpi.first.wpilibj.command.Command;
+
+public class ChangeLevel extends Command {
 
 	Boolean upOrDown; // True is up, False is down
 	double lastVoltage = 0;
 	double endVoltage = .3;
+	SubsystemStorage base;
 
-	public ChangeLevel(Boolean upOrDown1) {
+	public ChangeLevel(Boolean upOrDown1, SubsystemStorage base) {
 		upOrDown = upOrDown1;
+		this.base = base;
 	}
 
 	protected void initialize() {
@@ -18,81 +23,82 @@ public class ChangeLevel extends CommandBase {
 
 	protected void execute() {
 		lastVoltage = (lastVoltage + endVoltage) / 2;
-		if (upOrDown != null && (upOrDown || !upOrDown) && ((!lift.toBeReleased) || Robot.ignoreReleased)) {
+		base.grab.grab.getProperController().get();
+		if (upOrDown != null && (upOrDown || !upOrDown) && ((!base.lift.toBeReleased) || Robot.ignoreReleased)) {
 			if (upOrDown == null) {
 
-			} else if (upOrDown == true && !lift.atTop) {
-				lift.stopPID = true;
-				lift.atBottom = false;
-				lift.lift(lastVoltage * 2);
-			} else if (upOrDown == false && !lift.atBottom) {
-				lift.stopPID = true;
-				lift.atTop = false;
-				lift.lift(-lastVoltage);
+			} else if (upOrDown == true && !base.lift.atTop) {
+				base.lift.stopPID = true;
+				base.lift.atBottom = false;
+				base.lift.lift(lastVoltage * 2);
+			} else if (upOrDown == false && !base.lift.atBottom) {
+				base.lift.stopPID = true;
+				base.lift.atTop = false;
+				base.lift.lift(-lastVoltage);
 			}
 		}
 		if (upOrDown == null) {
-			lift.toBeReleased = false;
-			lift.lift(0);
-			if (!lift.pidStarted) {
-				new PidCommand(lift.thisEncoder.getDistance()).start();
+			base.lift.toBeReleased = false;
+			base.lift.lift(0);
+			if (!base.lift.pidStarted) {
+				new PidCommand(base.lift.thisEncoder.getDistance(), base).start();
 			}
 		}
 	}
 
 	protected boolean isFinished() { // Make it so you can go down if you don't touch the bottom level
 		if (upOrDown == null) {
-			lift.lift(0);
-			if (!lift.pidStarted) {
-				new PidCommand(lift.thisEncoder.getDistance()).start();
+			base.lift.lift(0);
+			if (!base.lift.pidStarted) {
+				new PidCommand(base.lift.thisEncoder.getDistance(), base).start();
 			}
 			return true; // Limit Switch to tell when you are at the bottom, and reset the counter
 		}
-		if (upOrDown == false && !lift.limitSwitchBottom.get()) {
-			lift.lift(0);
-			lift.atBottom = true;
-			lift.currentLevel = 0;
-			lift.thisEncoder.reset();
-			lift.toBeReleased = true;
+		if (upOrDown == false && !base.lift.limitSwitchBottom.get()) {
+			base.lift.lift(0);
+			base.lift.atBottom = true;
+			base.lift.currentLevel = 0;
+			base.lift.thisEncoder.reset();
+			base.lift.toBeReleased = true;
 			return true;
 		}
-		if (lift.atBottom == true && upOrDown == false && lift.thisEncoder.getDistance() <= 0) {
-			lift.lift(0);
-			lift.atBottom = true;
-			lift.currentLevel = 0;
-			lift.thisEncoder.reset();
-			lift.toBeReleased = true;
+		if (base.lift.atBottom == true && upOrDown == false && base.lift.thisEncoder.getDistance() <= 0) {
+			base.lift.lift(0);
+			base.lift.atBottom = true;
+			base.lift.currentLevel = 0;
+			base.lift.thisEncoder.reset();
+			base.lift.toBeReleased = true;
 			return true;
 		}
-		if (upOrDown == true && lift.limitSwitchTop.get()) {
-			lift.atTop = true;
-			lift.currentLevel = 6;
-			lift.lift(0);
-			lift.toBeReleased = true;
-			if (!lift.pidStarted) {
-				new PidCommand(lift.thisEncoder.getDistance()).start();
+		if (upOrDown == true && base.lift.limitSwitchTop.get()) {
+			base.lift.atTop = true;
+			base.lift.currentLevel = 6;
+			base.lift.lift(0);
+			base.lift.toBeReleased = true;
+			if (!base.lift.pidStarted) {
+				new PidCommand(base.lift.thisEncoder.getDistance(), base).start();
 			}
 			return true;
 		}
 		if (upOrDown == true) {
-			if (lift.lastPossition < 5) {
-				if (lift.thisEncoder.getDistance() >= lift.totesLocation[lift.lastPossition + 1]) {
-					lift.lastPossition++;
-					lift.lift(0);
-					lift.toBeReleased = true;
-					if (!lift.pidStarted) {
-						new PidCommand(lift.thisEncoder.getDistance()).start();
+			if (base.lift.lastPossition < 5) {
+				if (base.lift.thisEncoder.getDistance() >= base.lift.totesLocation[base.lift.lastPossition + 1]) {
+					base.lift.lastPossition++;
+					base.lift.lift(0);
+					base.lift.toBeReleased = true;
+					if (!base.lift.pidStarted) {
+						new PidCommand(base.lift.thisEncoder.getDistance(), base).start();
 					}
 					return true;
 				}
 			}
 		}
-		if (upOrDown == false && lift.lastPossition - 1 >= 0 && lift.thisEncoder.getDistance() <= lift.totesLocation[lift.lastPossition - 1]) {
-			lift.lastPossition--;
-			lift.lift(0);
-			lift.toBeReleased = true;
-			if (!lift.pidStarted) {
-				new PidCommand(lift.thisEncoder.getDistance()).start();
+		if (upOrDown == false && base.lift.lastPossition - 1 >= 0 && base.lift.thisEncoder.getDistance() <= base.lift.totesLocation[base.lift.lastPossition - 1]) {
+			base.lift.lastPossition--;
+			base.lift.lift(0);
+			base.lift.toBeReleased = true;
+			if (!base.lift.pidStarted) {
+				new PidCommand(base.lift.thisEncoder.getDistance(), base).start();
 			}
 			return true;
 		}
