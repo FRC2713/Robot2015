@@ -60,15 +60,21 @@ public class OI {
 	
 	private void assignButtons(SubsystemStorage base, boolean useXbox) {
 		GenericHID controller;
+		int liftUpPort;
+		int liftDownPort;
 		if (useXbox){
 			controller = xbox;
+			liftUpPort = 4;
+			liftDownPort = 1;
 		} else {
 			controller = stick;
+			liftUpPort = 3;
+			liftDownPort = 2;
 		}
-		liftUp = new JoystickButton(controller, 4);
+		liftUp = new JoystickButton(controller, liftUpPort);
 		liftUp.whileHeld(new ChangeLevel(true, base));
 		liftUp.whenReleased(new ChangeLevel(null, base));
-		liftDown = new JoystickButton(controller, 1);
+		liftDown = new JoystickButton(controller, liftDownPort);
 		liftDown.whileHeld(new ChangeLevel(false, base));
 		liftDown.whenReleased(new ChangeLevel(null, base));
 	}
