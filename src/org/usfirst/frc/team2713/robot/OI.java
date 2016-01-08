@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2713.robot;
 
+import org.usfirst.frc.team2713.robot.inputs.JoystickController;
 import org.usfirst.frc.team2713.robot.inputs.XBoxController;
 
 
@@ -9,6 +10,7 @@ import org.usfirst.frc.team2713.robot.commands.ChangeDriveSpeed;
 import org.usfirst.frc.team2713.robot.commands.ChangeLevel;
 import org.usfirst.frc.team2713.robot.commands.MakeDriveCoast;
 
+import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
@@ -23,6 +25,7 @@ public class OI {
 	// Button button = new JoystickButton(stick, buttonNumber);
 	
 	public static XBoxController xbox;
+	public static JoystickController stick;
 	private JoystickButton liftUp;
 	private JoystickButton liftDown;
 	private JoystickButton changeDriveSpeed;
@@ -32,12 +35,11 @@ public class OI {
 		xbox = new XBoxController(RobotMap.XBOX_PORT);
 		if (RobotMap.INIT_LIFT) {
 			
-			liftUp = new JoystickButton(xbox, 4);
-			liftUp.whileHeld(new ChangeLevel(true, base));
-			liftUp.whenReleased(new ChangeLevel(null, base));
-			liftDown = new JoystickButton(xbox, 1);
-			liftDown.whileHeld(new ChangeLevel(false, base));
-			liftDown.whenReleased(new ChangeLevel(null, base));
+			// XBox Buttons
+			assignButtons(base, true);
+			
+			// Stick Buttons
+			assignButtons(base, false);
 			
 		}
 		
@@ -50,6 +52,25 @@ public class OI {
 	public XBoxController getXbox() {
 		// TODO Auto-generated method stub
 		return xbox;
+	}
+	
+	public JoystickController getStick(){
+		return stick;
+	}
+	
+	private void assignButtons(SubsystemStorage base, boolean useXbox) {
+		GenericHID controller;
+		if (useXbox){
+			controller = xbox;
+		} else {
+			controller = stick;
+		}
+		liftUp = new JoystickButton(controller, 4);
+		liftUp.whileHeld(new ChangeLevel(true, base));
+		liftUp.whenReleased(new ChangeLevel(null, base));
+		liftDown = new JoystickButton(controller, 1);
+		liftDown.whileHeld(new ChangeLevel(false, base));
+		liftDown.whenReleased(new ChangeLevel(null, base));
 	}
 	
 
